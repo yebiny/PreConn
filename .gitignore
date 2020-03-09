@@ -3,3 +3,5 @@
 *.log
 *.psydat
 *.jpg
+
+.DS_Store
