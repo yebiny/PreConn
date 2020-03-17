@@ -390,7 +390,7 @@ for thisTrial in Trial:
         continueRoutine = True
         routineTimer.add(1.500000)
         # update component parameters for each repeat
-        imgs.setImage(face_image)
+        imgs.setImage(img)
         resp.keys = []
         resp.rt = []
         _resp_allKeys = []

@@ -1,7 +1,8 @@
 *.tif
-*.csv
 *.log
 *.psydat
 *.jpg
-
+.ipynb*
 .DS_Store
+
+data
