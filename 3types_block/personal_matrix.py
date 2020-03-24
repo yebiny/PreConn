@@ -1,0 +1,108 @@
+import pandas as pd
+import numpy as np
+import random
+import sys
+
+def make_matrix_file(matrix_data, matrix_index, save_dir, save_name):
+    stim_data = pd.DataFrame(matrix_data, index=matrix_index)
+    save_as = './subjects/'+save_dir+'/matrix/'+save_name
+    stim_data.to_csv(save_as)
+    print('This file is :', save_as)
+    print(pd.read_csv(save_as))
+
+def select_random_number():
+  while True:
+    num_overlap_list = [1,2,2,2,3,3]
+    overlap_list = random.sample(range(1,11),random.choice(num_overlap_list))
+    if len(overlap_list) == 2:
+      if abs(overlap_list[0]-overlap_list[1]) > 1:
+        return overlap_list
+        break
+    elif len(overlap_list) == 3:
+      if abs(overlap_list[0]-overlap_list[1]) > 1 and abs(overlap_list[0]-overlap_list[2]) > 1 and abs(overlap_list[1]-overlap_list[2]) > 1:
+        return overlap_list
+        break
+    else:
+      return overlap_list
+      break
+
+def make_matrix_list():
+    matrix_list = []
+    print("==BlockID ==")
+    blockID = []
+    blockID_list = [i+1 for i in range(12)]
+    np.random.shuffle(blockID_list)
+    for i in range(len(blockID_list)):
+        for j in range(12):
+            blockID.append(blockID_list[i])
+    print(blockID)
+    matrix_list.append(blockID)
+
+    print("== Trial ==")
+    trial = []
+    for i in range(12):
+        trial_list = [i+1 for i in range(12)]
+        trial.extend(trial_list)
+    print(trial)
+    matrix_list.append(trial)
+
+    print("== Category ==")
+    category = []
+    category_list = []
+    for i in range(4): category_list.append(1)
+    for i in range(4): category_list.append(2)
+    for i in range(4): category_list.append(3)
+    random.shuffle(category_list)
+    for i in range(12):
+        for j in range(12):
+            category.append(category_list[i])
+    print(category)
+    matrix_list.append(category)
+
+    print("=======ImageID=======")
+    f_imageID = []
+    for i in range(12):
+        f_img_idx = [i+1 for i in range(12)]
+        np.random.shuffle(f_img_idx)
+        f_imageID.extend(f_img_idx)
+    print(f_imageID)    
+    matrix_list.append(f_imageID)
+
+    print("=======Target-ness=======")
+    target_ness = []
+    for i in range(len(blockID)):
+        if blockID[i] >0 and blockID[i] < 5:
+            target_ness.append(1)
+        elif blockID[i] >4 and blockID[i]<9:
+            target_ness.append(2)
+        if blockID[i] >8 and blockID[i] <13:
+            target_ness.append(3)
+    print(target_ness)
+    matrix_list.append(target_ness)
+
+    print("=======Onset time=======")
+    onset_time = []
+    time = 0
+    for i in range(144):
+        if i%12 == 0 and i!=0: time = time+12 
+        else: time = time+1.5
+        onset_time.append(time)
+    print(onset_time)
+    matrix_list.append(onset_time)  
+    
+    matrix_list = np.array(matrix_list, float)
+    return matrix_list				
+
+def main():
+	matrix_list = make_matrix_list()
+	matrix_index = ['blockID','trial','category','imageID','target_ness', 'onset_time']
+	save_dir = sys.argv[1]
+	
+	if len(sys.argv) == 3:
+		save_name = sys.argv[2]
+	else:
+		save_name = 'matrix.csv'
+
+	make_matrix_file(matrix_list, matrix_index, save_dir, save_name)
+if __name__ == '__main__':	
+	main()
