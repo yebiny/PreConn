@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" ?>
+<PsychoPy2experiment encoding="utf-8" version="2020.1.2">
+  <Settings>
+    <Param name="Audio latency priority" updates="None" val="use prefs" valType="str"/>
+    <Param name="Audio lib" updates="None" val="use prefs" valType="str"/>
+    <Param name="Completed URL" updates="None" val="" valType="str"/>
+    <Param name="Data filename" updates="None" val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code"/>
+    <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
+    <Param name="Experiment info" updates="None" val="{'participant':'', 'session':'001'}" valType="code"/>
+    <Param name="Force stereo" updates="None" val="True" valType="bool"/>
+    <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
+    <Param name="HTML path" updates="None" val="html" valType="str"/>
+    <Param name="Incomplete URL" updates="None" val="" valType="str"/>
+    <Param name="Monitor" updates="None" val="testMonitor" valType="str"/>
+    <Param name="Save csv file" updates="None" val="False" valType="bool"/>
+    <Param name="Save excel file" updates="None" val="False" valType="bool"/>
+    <Param name="Save log file" updates="None" val="True" valType="bool"/>
+    <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
+    <Param name="Save wide csv file" updates="None" val="True" valType="bool"/>
+    <Param name="Screen" updates="None" val="1" valType="num"/>
+    <Param name="Show info dlg" updates="None" val="True" valType="bool"/>
+    <Param name="Show mouse" updates="None" val="False" valType="bool"/>
+    <Param name="Units" updates="None" val="height" valType="str"/>
+    <Param name="Use version" updates="None" val="" valType="str"/>
+    <Param name="Window size (pixels)" updates="None" val="(1024, 768)" valType="code"/>
+    <Param name="blendMode" updates="None" val="avg" valType="str"/>
+    <Param name="color" updates="None" val="$[0,0,0]" valType="str"/>
+    <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
+    <Param name="expName" updates="None" val="test" valType="str"/>
+    <Param name="exportHTML" updates="None" val="on Sync" valType="str"/>
+    <Param name="logging level" updates="None" val="exp" valType="code"/>
+  </Settings>
+  <Routines>
+    <Routine name="Welcome">
+      <TextComponent name="welcome_text">
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+        <Param name="name" updates="None" val="welcome_text" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="12" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="Welcome !" valType="str"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
+      <KeyboardComponent name="welcome_resp">
+        <Param name="allowedKeys" updates="constant" val="'space'" valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="welcome_resp" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+    </Routine>
+    <Routine name="Rest">
+      <PolygonComponent name="rest_dot">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="rest_dot" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="rectangle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.05, 0.05)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="3" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </PolygonComponent>
+    </Routine>
+    <Routine name="Wait">
+      <TextComponent name="wait_text">
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+        <Param name="name" updates="None" val="wait_text" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="Wait.." valType="str"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
+      <KeyboardComponent name="wait_resp">
+        <Param name="allowedKeys" updates="constant" val="'space'" valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="wait_resp" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+    </Routine>
+    <Routine name="Trial">
+      <ImageComponent name="Face">
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flipHoriz" updates="constant" val="False" valType="bool"/>
+        <Param name="flipVert" updates="constant" val="False" valType="bool"/>
+        <Param name="image" updates="set every repeat" val="face_image" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="mask" updates="constant" val="None" valType="str"/>
+        <Param name="name" updates="None" val="Face" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="size" updates="constant" val="(0.5, 0.5)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.5" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="texture resolution" updates="constant" val="128" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </ImageComponent>
+      <ImageComponent name="Scene">
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flipHoriz" updates="constant" val="False" valType="bool"/>
+        <Param name="flipVert" updates="constant" val="False" valType="bool"/>
+        <Param name="image" updates="set every repeat" val="$scene_image" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="mask" updates="constant" val="None" valType="str"/>
+        <Param name="name" updates="None" val="Scene" valType="code"/>
+        <Param name="opacity" updates="constant" val="0.3" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="size" updates="constant" val="(0.5, 0.5)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.5" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="texture resolution" updates="constant" val="128" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </ImageComponent>
+      <PolygonComponent name="Dot">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="Dot" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="rectangle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.07, 0.07)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="1.5" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </PolygonComponent>
+      <KeyboardComponent name="Resp">
+        <Param name="allowedKeys" updates="constant" val="'space'" valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="Resp" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.5" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+    </Routine>
+  </Routines>
+  <Flow>
+    <Routine name="Welcome"/>
+    <Routine name="Wait"/>
+    <LoopInitiator loopType="TrialHandler" name="Blocks">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="[OrderedDict([('row', '0:12')]), OrderedDict([('row', '12:24')]), OrderedDict([('row', '24:36')]), OrderedDict([('row', '36:48')]), OrderedDict([('row', '48:60')]), OrderedDict([('row', '60:72')]), OrderedDict([('row', '72:84')]), OrderedDict([('row', '84:96')]), OrderedDict([('row', '96:108')]), OrderedDict([('row', '108:120')]), OrderedDict([('row', '120:132')]), OrderedDict([('row', '132:144')])]" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="files/rowlist.csv" valType="str"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="1" valType="code"/>
+      <Param name="name" updates="None" val="Blocks" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <LoopInitiator loopType="TrialHandler" name="Imgs">
+      <Param name="Selected rows" updates="None" val="$row" valType="str"/>
+      <Param name="conditions" updates="None" val="[OrderedDict([('face_image', 'stim/face/face_141'), ('scene_image', 'stim/scene/scene_143')]), OrderedDict([('face_image', 'stim/face/face_115'), ('scene_image', 'stim/scene/scene_144')]), OrderedDict([('face_image', 'stim/face/face_112'), ('scene_image', 'stim/scene/scene_110')]), OrderedDict([('face_image', 'stim/face/face_124'), ('scene_image', 'stim/scene/scene_128')]), OrderedDict([('face_image', 'stim/face/face_123'), ('scene_image', 'stim/scene/scene_117')]), OrderedDict([('face_image', 'stim/face/face_140'), ('scene_image', 'stim/scene/scene_121')]), OrderedDict([('face_image', 'stim/face/face_122'), ('scene_image', 'stim/scene/scene_119')]), OrderedDict([('face_image', 'stim/face/face_125'), ('scene_image', 'stim/scene/scene_126')]), OrderedDict([('face_image', 'stim/face/face_113'), ('scene_image', 'stim/scene/scene_142')]), OrderedDict([('face_image', 'stim/face/face_114'), ('scene_image', 'stim/scene/scene_118')]), OrderedDict([('face_image', 'stim/face/face_10'), ('scene_image', 'stim/scene/scene_127')]), OrderedDict([('face_image', 'stim/face/face_17'), ('scene_image', 'stim/scene/scene_120')]), OrderedDict([('face_image', 'stim/face/face_28'), ('scene_image', 'stim/scene/scene_129')]), OrderedDict([('face_image', 'stim/face/face_21'), ('scene_image', 'stim/scene/scene_116')]), OrderedDict([('face_image', 'stim/face/face_26'), ('scene_image', 'stim/scene/scene_111')]), OrderedDict([('face_image', 'stim/face/face_19'), ('scene_image', 'stim/scene/scene_46')]), OrderedDict([('face_image', 'stim/face/face_86'), ('scene_image', 'stim/scene/scene_79')]), OrderedDict([('face_image', 'stim/face/face_72'), ('scene_image', 'stim/scene/scene_41')]), OrderedDict([('face_image', 'stim/face/face_75'), ('scene_image', 'stim/scene/scene_83')]), OrderedDict([('face_image', 'stim/face/face_81'), ('scene_image', 'stim/scene/scene_77')]), OrderedDict([('face_image', 'stim/face/face_88'), ('scene_image', 'stim/scene/scene_48')]), OrderedDict([('face_image', 'stim/face/face_43'), ('scene_image', 'stim/scene/scene_70')]), OrderedDict([('face_image', 'stim/face/face_44'), ('scene_image', 'stim/scene/scene_84')]), OrderedDict([('face_image', 'stim/face/face_27'), ('scene_image', 'stim/scene/scene_24')]), OrderedDict([('face_image', 'stim/face/face_18'), ('scene_image', 'stim/scene/scene_23')]), OrderedDict([('face_image', 'stim/face/face_20'), ('scene_image', 'stim/scene/scene_15')]), OrderedDict([('face_image', 'stim/face/face_16'), ('scene_image', 'stim/scene/scene_12')]), OrderedDict([('face_image', 'stim/face/face_29'), ('scene_image', 'stim/scene/scene_85')]), OrderedDict([('face_image', 'stim/face/face_11'), ('scene_image', 'stim/scene/scene_71')]), OrderedDict([('face_image', 'stim/face/face_45'), ('scene_image', 'stim/scene/scene_76')]), OrderedDict([('face_image', 'stim/face/face_89'), ('scene_image', 'stim/scene/scene_82')]), OrderedDict([('face_image', 'stim/face/face_42'), ('scene_image', 'stim/scene/scene_49')]), OrderedDict([('face_image', 'stim/face/face_80'), ('scene_image', 'stim/scene/scene_40')]), OrderedDict([('face_image', 'stim/face/face_74'), ('scene_image', 'stim/scene/scene_47')]), OrderedDict([('face_image', 'stim/face/face_73'), ('scene_image', 'stim/scene/scene_78')]), OrderedDict([('face_image', 'stim/face/face_87'), ('scene_image', 'stim/scene/scene_13')]), OrderedDict([('face_image', 'stim/face/face_51'), ('scene_image', 'stim/scene/scene_14')]), OrderedDict([('face_image', 'stim/face/face_3'), ('scene_image', 'stim/scene/scene_22')]), OrderedDict([('face_image', 'stim/face/face_56'), ('scene_image', 'stim/scene/scene_25')]), OrderedDict([('face_image', 'stim/face/face_4'), ('scene_image', 'stim/scene/scene_38')]), OrderedDict([('face_image', 'stim/face/face_69'), ('scene_image', 'stim/scene/scene_36')]), OrderedDict([('face_image', 'stim/face/face_94'), ('scene_image', 'stim/scene/scene_3')]), OrderedDict([('face_image', 'stim/face/face_60'), ('scene_image', 'stim/scene/scene_31')]), OrderedDict([('face_image', 'stim/face/face_67'), ('scene_image', 'stim/scene/scene_4')]), OrderedDict([('face_image', 'stim/face/face_93'), ('scene_image', 'stim/scene/scene_91')]), OrderedDict([('face_image', 'stim/face/face_58'), ('scene_image', 'stim/scene/scene_65')]), OrderedDict([('face_image', 'stim/face/face_33'), ('scene_image', 'stim/scene/scene_62')]), OrderedDict([('face_image', 'stim/face/face_34'), ('scene_image', 'stim/scene/scene_96')]), OrderedDict([('face_image', 'stim/face/face_92'), ('scene_image', 'stim/scene/scene_54')]), OrderedDict([('face_image', 'stim/face/face_66'), ('scene_image', 'stim/scene/scene_98')]), OrderedDict([('face_image', 'stim/face/face_59'), ('scene_image', 'stim/scene/scene_53')]), OrderedDict([('face_image', 'stim/face/face_61'), ('scene_image', 'stim/scene/scene_30')]), OrderedDict([('face_image', 'stim/face/face_95'), ('scene_image', 'stim/scene/scene_5')]), OrderedDict([('face_image', 'stim/face/face_57'), ('scene_image', 'stim/scene/scene_37')]), OrderedDict([('face_image', 'stim/face/face_68'), ('scene_image', 'stim/scene/scene_2')]), OrderedDict([('face_image', 'stim/face/face_5'), ('scene_image', 'stim/scene/scene_39')]), OrderedDict([('face_image', 'stim/face/face_50'), ('scene_image', 'stim/scene/scene_99')]), OrderedDict([('face_image', 'stim/face/face_2'), ('scene_image', 'stim/scene/scene_52')]), OrderedDict([('face_image', 'stim/face/face_35'), ('scene_image', 'stim/scene/scene_55')]), OrderedDict([('face_image', 'stim/face/face_32'), ('scene_image', 'stim/scene/scene_97')]), OrderedDict([('face_image', 'stim/face/face_109'), ('scene_image', 'stim/scene/scene_63')]), OrderedDict([('face_image', 'stim/face/face_136'), ('scene_image', 'stim/scene/scene_64')]), OrderedDict([('face_image', 'stim/face/face_131'), ('scene_image', 'stim/scene/scene_90')]), OrderedDict([('face_image', 'stim/face/face_138'), ('scene_image', 'stim/scene/scene_133')]), OrderedDict([('face_image', 'stim/face/face_107'), ('scene_image', 'stim/scene/scene_134')]), OrderedDict([('face_image', 'stim/face/face_100'), ('scene_image', 'stim/scene/scene_102')]), OrderedDict([('face_image', 'stim/face/face_101'), ('scene_image', 'stim/scene/scene_105')]), OrderedDict([('face_image', 'stim/face/face_139'), ('scene_image', 'stim/scene/scene_104')]), OrderedDict([('face_image', 'stim/face/face_106'), ('scene_image', 'stim/scene/scene_103')]), OrderedDict([('face_image', 'stim/face/face_130'), ('scene_image', 'stim/scene/scene_135')]), OrderedDict([('face_image', 'stim/face/face_108'), ('scene_image', 'stim/scene/scene_132')]), OrderedDict([('face_image', 'stim/face/face_137'), ('scene_image', 'stim/scene/scene_114')]), OrderedDict([('face_image', 'stim/face/face_111'), ('scene_image', 'stim/scene/scene_113')]), OrderedDict([('face_image', 'stim/face/face_116'), ('scene_image', 'stim/scene/scene_125')]), OrderedDict([('face_image', 'stim/face/face_129'), ('scene_image', 'stim/scene/scene_122')]), OrderedDict([('face_image', 'stim/face/face_120'), ('scene_image', 'stim/scene/scene_140')]), OrderedDict([('face_image', 'stim/face/face_127'), ('scene_image', 'stim/scene/scene_123')]), OrderedDict([('face_image', 'stim/face/face_118'), ('scene_image', 'stim/scene/scene_124')]), OrderedDict([('face_image', 'stim/face/face_142'), ('scene_image', 'stim/scene/scene_112')]), OrderedDict([('face_image', 'stim/face/face_126'), ('scene_image', 'stim/scene/scene_115')]), OrderedDict([('face_image', 'stim/face/face_119'), ('scene_image', 'stim/scene/scene_141')]), OrderedDict([('face_image', 'stim/face/face_121'), ('scene_image', 'stim/scene/scene_20')]), OrderedDict([('face_image', 'stim/face/face_117'), ('scene_image', 'stim/scene/scene_18')]), OrderedDict([('face_image', 'stim/face/face_128'), ('scene_image', 'stim/scene/scene_27')]), OrderedDict([('face_image', 'stim/face/face_110'), ('scene_image', 'stim/scene/scene_11')]), OrderedDict([('face_image', 'stim/face/face_144'), ('scene_image', 'stim/scene/scene_29')]), OrderedDict([('face_image', 'stim/face/face_143'), ('scene_image', 'stim/scene/scene_16')]), OrderedDict([('face_image', 'stim/face/face_49'), ('scene_image', 'stim/scene/scene_42')]), OrderedDict([('face_image', 'stim/face/face_76'), ('scene_image', 'stim/scene/scene_89')]), OrderedDict([('face_image', 'stim/face/face_82'), ('scene_image', 'stim/scene/scene_45')]), OrderedDict([('face_image', 'stim/face/face_85'), ('scene_image', 'stim/scene/scene_73')]), OrderedDict([('face_image', 'stim/face/face_71'), ('scene_image', 'stim/scene/scene_87')]), OrderedDict([('face_image', 'stim/face/face_78'), ('scene_image', 'stim/scene/scene_80')]), OrderedDict([('face_image', 'stim/face/face_47'), ('scene_image', 'stim/scene/scene_74')]), OrderedDict([('face_image', 'stim/face/face_40'), ('scene_image', 'stim/scene/scene_28')]), OrderedDict([('face_image', 'stim/face/face_14'), ('scene_image', 'stim/scene/scene_17')]), OrderedDict([('face_image', 'stim/face/face_13'), ('scene_image', 'stim/scene/scene_10')]), OrderedDict([('face_image', 'stim/face/face_25'), ('scene_image', 'stim/scene/scene_19')]), OrderedDict([('face_image', 'stim/face/face_22'), ('scene_image', 'stim/scene/scene_26')]), OrderedDict([('face_image', 'stim/face/face_41'), ('scene_image', 'stim/scene/scene_21')]), OrderedDict([('face_image', 'stim/face/face_79'), ('scene_image', 'stim/scene/scene_75')]), OrderedDict([('face_image', 'stim/face/face_46'), ('scene_image', 'stim/scene/scene_81')]), OrderedDict([('face_image', 'stim/face/face_70'), ('scene_image', 'stim/scene/scene_86')]), OrderedDict([('face_image', 'stim/face/face_84'), ('scene_image', 'stim/scene/scene_72')]), OrderedDict([('face_image', 'stim/face/face_48'), ('scene_image', 'stim/scene/scene_44')]), OrderedDict([('face_image', 'stim/face/face_83'), ('scene_image', 'stim/scene/scene_43')]), OrderedDict([('face_image', 'stim/face/face_77'), ('scene_image', 'stim/scene/scene_88')]), OrderedDict([('face_image', 'stim/face/face_23'), ('scene_image', 'stim/scene/scene_61')]), OrderedDict([('face_image', 'stim/face/face_24'), ('scene_image', 'stim/scene/scene_95')]), OrderedDict([('face_image', 'stim/face/face_12'), ('scene_image', 'stim/scene/scene_59')]), OrderedDict([('face_image', 'stim/face/face_15'), ('scene_image', 'stim/scene/scene_92')]), OrderedDict([('face_image', 'stim/face/face_37'), ('scene_image', 'stim/scene/scene_66')]), OrderedDict([('face_image', 'stim/face/face_30'), ('scene_image', 'stim/scene/scene_50')]), OrderedDict([('face_image', 'stim/face/face_39'), ('scene_image', 'stim/scene/scene_68')]), OrderedDict([('face_image', 'stim/face/face_55'), ('scene_image', 'stim/scene/scene_57')]), OrderedDict([('face_image', 'stim/face/face_7'), ('scene_image', 'stim/scene/scene_9')]), OrderedDict([('face_image', 'stim/face/face_52'), ('scene_image', 'stim/scene/scene_32')]), OrderedDict([('face_image', 'stim/face/face_99'), ('scene_image', 'stim/scene/scene_7')]), OrderedDict([('face_image', 'stim/face/face_64'), ('scene_image', 'stim/scene/scene_35')]), OrderedDict([('face_image', 'stim/face/face_90'), ('scene_image', 'stim/scene/scene_69')]), OrderedDict([('face_image', 'stim/face/face_9'), ('scene_image', 'stim/scene/scene_56')]), OrderedDict([('face_image', 'stim/face/face_97'), ('scene_image', 'stim/scene/scene_51')]), OrderedDict([('face_image', 'stim/face/face_63'), ('scene_image', 'stim/scene/scene_58')]), OrderedDict([('face_image', 'stim/face/face_38'), ('scene_image', 'stim/scene/scene_67')]), OrderedDict([('face_image', 'stim/face/face_31'), ('scene_image', 'stim/scene/scene_93')]), OrderedDict([('face_image', 'stim/face/face_36'), ('scene_image', 'stim/scene/scene_94')]), OrderedDict([('face_image', 'stim/face/face_62'), ('scene_image', 'stim/scene/scene_60')]), OrderedDict([('face_image', 'stim/face/face_96'), ('scene_image', 'stim/scene/scene_34')]), OrderedDict([('face_image', 'stim/face/face_8'), ('scene_image', 'stim/scene/scene_1')]), OrderedDict([('face_image', 'stim/face/face_91'), ('scene_image', 'stim/scene/scene_33')]), OrderedDict([('face_image', 'stim/face/face_65'), ('scene_image', 'stim/scene/scene_6')]), OrderedDict([('face_image', 'stim/face/face_53'), ('scene_image', 'stim/scene/scene_8')]), OrderedDict([('face_image', 'stim/face/face_98'), ('scene_image', 'stim/scene/scene_137')]), OrderedDict([('face_image', 'stim/face/face_1'), ('scene_image', 'stim/scene/scene_108')]), OrderedDict([('face_image', 'stim/face/face_54'), ('scene_image', 'stim/scene/scene_130')]), OrderedDict([('face_image', 'stim/face/face_6'), ('scene_image', 'stim/scene/scene_106')]), OrderedDict([('face_image', 'stim/face/face_132'), ('scene_image', 'stim/scene/scene_139')]), OrderedDict([('face_image', 'stim/face/face_135'), ('scene_image', 'stim/scene/scene_101')]), OrderedDict([('face_image', 'stim/face/face_103'), ('scene_image', 'stim/scene/scene_100')]), OrderedDict([('face_image', 'stim/face/face_104'), ('scene_image', 'stim/scene/scene_107')]), OrderedDict([('face_image', 'stim/face/face_105'), ('scene_image', 'stim/scene/scene_138')]), OrderedDict([('face_image', 'stim/face/face_102'), ('scene_image', 'stim/scene/scene_131')]), OrderedDict([('face_image', 'stim/face/face_134'), ('scene_image', 'stim/scene/scene_136')]), OrderedDict([('face_image', 'stim/face/face_133'), ('scene_image', 'stim/scene/scene_109')])]" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="files/imglist.csv" valType="str"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="1" valType="code"/>
+      <Param name="name" updates="None" val="Imgs" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="Trial"/>
+    <LoopTerminator name="Imgs"/>
+    <Routine name="Rest"/>
+    <LoopTerminator name="Blocks"/>
+  </Flow>
+</PsychoPy2experiment>

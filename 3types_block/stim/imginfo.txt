@@ -1,8 +1,0 @@
-Images for transparent image experiment
-* Scene : 12 images for 12 Blocks = 144 images are needed
-	- .tif file
-	- number 1 ~ * 
-* Face : 12 images for 12 Blcoks  = 144 images are needed
-	- .tif file
-	- number 1 ~ *
-
