@@ -1,10 +1,8 @@
 # PreConn
 
-
 Building Experiments in PsychoPy
 
-
-## Sturcture
+* Sturcture:
 
 
 ## 1. Setting 
