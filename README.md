@@ -6,29 +6,29 @@ Building Experiments in PsychoPy
 
 ## Sturcture
 
-├── 1-FSO_roi
-│   ├── README.md
-│   ├── exe_this.py
-│   ├── make_matrix.py
-│   ├── stim
-│   └── structure.psyexp
-├── 2-SO_localizer
-│   ├── README.md
-│   ├── exe_this.py
-│   ├── make_matrix.py
-│   ├── ordering.py
-│   ├── stim
-│   └── structure.psyexp
-├── 3-Diamond
-│   └── README.md
-├── README.md
-├── check_stim.ipynb
-├── psychopy-env.yml
-└── subjects
-    ├── README.md
-    ├── make_subdir.sh
-    ├── read_csv.py
-    └── test
+├── 1-FSO_roi \
+   ├── README.md \
+   ├── exe_this.py \
+   ├── make_matrix.py \    
+   ├── stim \
+   └── structure.psyexp \
+├── 2-SO_localizer \
+   ├── README.md \
+   ├── exe_this.py \
+   ├── make_matrix.py \
+   ├── ordering.py \
+   ├── stim \
+   └── structure.psyexp \
+├── 3-Diamond \
+│   └── README.md \
+├── README.md\
+├── check_stim.ipynb\
+├── psychopy-env.yml\
+└── subjects\
+    ├── README.md\
+    ├── make_subdir.sh\
+    ├── read_csv.py\
+    └── test\
 
 ## 1. Setting 
 
