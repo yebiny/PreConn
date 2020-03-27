@@ -36,12 +36,24 @@ os.chdir(_thisDir)
 sub = sys.argv[1]
 exp = sys.argv[2]
 sub_dir = '../subjects/%s'%sub
-matrix_file = '%s_matrix.csv'%exp
+matrix_file = '2-%s_matrix.csv'%exp
 matrix_path  = '%s/matrix/%s'%(sub_dir, matrix_file)
+order_path  = '%s/matrix/2_ordering.csv'%(sub_dir)
 
 matrix = pd.read_csv(matrix_path)
 print("* Load Personal Matrix From [%s]"%(matrix_path))
 print(matrix)
+
+order = pd.read_csv(order_path)
+print("* Load Ordering Matrix From [%s]"%(order_path))
+print(order)
+
+order = order.loc[int(exp)-1][1]
+if str(order) == "S": thisTrial = "Scene"
+elif str(order) == "O": thisTrial = "Object"
+else: print("ERROR!!!!!!!!")
+
+print( "* This Trial is [ %s ]"%thisTrial)
 
 f_img_dir = './stim/face/'
 s_img_dir = './stim/scene/'
@@ -52,10 +64,9 @@ target_ness = matrix.loc[4]
 nBlock = 12
 nStim = 12
 
-
 # Store info about the experiment session
 psychopyVersion = '2020.1.2'
-expName = 'exp_%s'%(exp)  # from the Builder filename that created this script
+expName = 'exp_2-%s'%(exp)  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '001'}
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
 if dlg.OK == False:
@@ -113,7 +124,7 @@ welcome_resp = keyboard.Keyboard()
 # Initialize components for Routine "Wait"
 WaitClock = core.Clock()
 wait_text = visual.TextStim(win=win, name='wait_text',
-    text='Wait..',
+    text='This is %s Trial. Focus on %s Image! '%(thisTrial,thisTrial),
     font='Arial',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -376,7 +387,7 @@ if thisBlock != None:
 
 
 for i, thisBlock in zip(range(nBlock), Blocks):
-    print("This is ", i, "th Block")
+    print("This is ", i+1, "th Block")
     currentLoop = Blocks
     # abbreviate parameter names if possible (e.g. rgb = thisBlock.rgb)
     if thisBlock != None:
@@ -396,20 +407,26 @@ for i, thisBlock in zip(range(nBlock), Blocks):
             exec('{} = thisImg[paramName]'.format(paramName))
     
     for j, thisImg in zip(range(nStim), Imgs):
+        idx = i*12+j+1
         currentLoop = Imgs
         # abbreviate parameter names if possible (e.g. rgb = thisImg.rgb)
         if thisImg != None:
             for paramName in thisImg:
                 exec('{} = thisImg[paramName]'.format(paramName))
-        
         # ------Prepare to start Routine "Trial"-------
         continueRoutine = True
         routineTimer.add(1.500000)
         # update component parameters for each repeat
-    	
-        idx = i*12+j+1
-        f_img = f_img_dir+'face_'+str(int(f_idx_list[idx]))
-        s_img = s_img_dir+'scene_'+str(int(s_idx_list[idx]))
+        f_img = f_idx_list[idx]
+        s_img = s_idx_list[idx]
+        if thisTrial == 'Object' and target_ness[idx] ==1:
+            f_img = f_idx_list[idx-1]
+            print('target')
+        if thisTrial == 'Scene' and target_ness[idx] ==1:
+            s_img = s_idx_list[idx-1]
+            print('target')
+        f_img = f_img_dir+'face_'+str(int(f_img))
+        s_img = s_img_dir+'scene_'+str(int(s_img))
         print(f_img, s_img)
         Face.setImage(f_img)
         Scene.setImage(s_img)

@@ -93,7 +93,7 @@ def main():
 	matrix_index = ['blockID','trial','f_imageID','s_imageID','target_ness', 'onset_time']
 	save_dir = sys.argv[1]
 	save_name = sys.argv[2]
-	save_name = '%s_matrix.csv'%save_name
+	save_name = '2-%s_matrix.csv'%save_name
 
 	make_matrix_file(matrix_list, matrix_index, save_dir, save_name)
 if __name__ == '__main__':	

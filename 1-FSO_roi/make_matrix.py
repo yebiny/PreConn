@@ -5,7 +5,7 @@ import sys
 
 def make_matrix_file(matrix_data, matrix_index, save_dir, save_name):
     stim_data = pd.DataFrame(matrix_data, index=matrix_index)
-    save_as = './subjects/'+save_dir+'/matrix/'+save_name
+    save_as = '../subjects/'+save_dir+'/matrix/'+save_name
     stim_data.to_csv(save_as)
     print('This file is :', save_as)
     print(pd.read_csv(save_as))
@@ -113,7 +113,7 @@ def main():
 	if len(sys.argv) == 3:
 		save_name = sys.argv[2]
 	else:
-		save_name = 'matrix.csv'
+		save_name = '1_matrix.csv'
 
 	make_matrix_file(matrix_list, matrix_index, save_dir, save_name)
 if __name__ == '__main__':	
