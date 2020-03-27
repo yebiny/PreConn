@@ -24,3 +24,17 @@ conda env list
 conda activate psychopy
 ```
 ------
+
+## 2. Experiment
+
+PreConn 에서는 총 3가지의 실험이 진행됩니다. 
+
+### 2-1. F-S-O ROI
+
+### 2-2. S-O Localizer 
+
+### 2-3. Line-Diamond 
+
+## 3. Subject
+
+피실험자에 대한 모든 정보와 실험 결과는 /subjects/[subject_title] 에 관리 됩니다. 
