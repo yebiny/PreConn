@@ -59,7 +59,7 @@ f_img_dir = './stim/face/'
 s_img_dir = './stim/scene/'
 f_idx_list = matrix.loc[2]
 s_idx_list = matrix.loc[3]	
-target_ness = matrix.loc[4]
+target_list = matrix.loc[4]
 
 nBlock = 12
 nStim = 12
@@ -419,15 +419,13 @@ for i, thisBlock in zip(range(nBlock), Blocks):
         # update component parameters for each repeat
         f_img = f_idx_list[idx]
         s_img = s_idx_list[idx]
-        if thisTrial == 'Object' and target_ness[idx] ==1:
+        if thisTrial == 'Object' and target_list[idx] ==1:
             f_img = f_idx_list[idx-1]
-            print('target')
-        if thisTrial == 'Scene' and target_ness[idx] ==1:
+        if thisTrial == 'Scene' and target_list[idx] ==1:
             s_img = s_idx_list[idx-1]
-            print('target')
         f_img = f_img_dir+'face_'+str(int(f_img))
         s_img = s_img_dir+'scene_'+str(int(s_img))
-        print(f_img, s_img)
+        print(f_img, s_img, 'is target? ', int(target_list[idx]))
         Face.setImage(f_img)
         Scene.setImage(s_img)
         Resp.keys = []
@@ -524,7 +522,7 @@ for i, thisBlock in zip(range(nBlock), Blocks):
                 win.callOnFlip(Resp.clearEvents, eventType='keyboard')
             if Resp.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > Resp.tStartRefresh + 0.5-frameTolerance:
+                if tThisFlipGlobal > Resp.tStartRefresh + 1.0-frameTolerance:
                     # keep track of stop time/frame for later
                     Resp.tStop = t  # not accounting for scr refresh
                     Resp.frameNStop = frameN  # exact frame index
