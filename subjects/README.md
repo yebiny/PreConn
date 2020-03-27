@@ -7,7 +7,7 @@
 * make_subdir.sh 를 이용하여 subject directory를 생성합니다. 
 
 ```
-bash make_subdir.sh [subject directory name]
+bash make_subdir.sh [directory name]
 ```
 * 'test_01'이라는 이름으로 subject directory를 생성하면 하위 폴더가 다음과 같이 만들어집니다.
 
