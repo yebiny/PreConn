@@ -23,7 +23,7 @@ conda env list
 ```
 conda activate psychopy
 ```
-------
+
 
 ## 2. Experiment
 
