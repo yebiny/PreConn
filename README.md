@@ -9,7 +9,7 @@ Building Experiments in PsychoPy
 ├── 1-FSO_roi \
    ├── README.md \
    ├── exe_this.py \
-   ├── make_matrix.py \    
+   ├── make_matrix.py \
    ├── stim \
    └── structure.psyexp \
 ├── 2-SO_localizer \
@@ -20,7 +20,7 @@ Building Experiments in PsychoPy
    ├── stim \
    └── structure.psyexp \
 ├── 3-Diamond \
-│   └── README.md \
+   └── README.md \
 ├── README.md\
 ├── check_stim.ipynb\
 ├── psychopy-env.yml\
