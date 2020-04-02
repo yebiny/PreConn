@@ -1,5 +1,6 @@
-# Face Scene Object .. ROI
+# Face Scene Object ROI
 
+![02]({{ site.url }}/1-FSO_roi/model-block.PNG)
 
 ## 1. 실험 구성
 
