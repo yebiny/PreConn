@@ -7,6 +7,16 @@
 
 ## 1. 실험 구성
 
+* 12개의 Block 으로 이루어져 있습니다.
+* Block의 종류는 총 3가지, Face, Scene, Object로 이루어져 있습니다.
+* 한 Block이 시행되면 Block 종류에 따른 12개의 이미지가 각 trial마다 출력됩니다. 
+* 한 Block은 1.5 * 12 = 총 18초 입니다.  
+* 한 Block이 끝나면 12초 동안 Rest 단계가 있습니다.
+* 이미지는 Face, Scene, Object 각각 48장이 존재합니다.
+* target은 한 블럭 안에 최소 1번에서 최대 3번까지 랜덤으로 존재합니다.
+* target 일때 이미지는 직전 이미지와 동일한 이미지가 출력됩니다. 
+
+
 1-FSO_roi\
 ├── README.md\
 ├── exe_this.py\
