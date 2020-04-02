@@ -37,14 +37,14 @@
 
 #### Matrix format
 
-|  <center>Unnamed</center> |  <center>0</center> |  <center>1</center> |  <center>2</center> |  <center>3</center> |  <center>4</center> |
-|:--------|:--------:|--------:|--------:|--------:|--------:|
-|**blockID** | <center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> ... </center> |
-|**trial** | <center> 1 </center> |<center> 2 </center> |<center> 3 </center> |<center> 4 </center> |<center> ... </center> |
-|**category** | <center> 3 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> ... </center> |
-|**imageID** | <center> 28 </center> |<center> 19 </center> |<center> 8 </center> |<center> 4 </center> |<center> ... </center> |
-|**target_ness** | <center> 0 </center> |<center> 0 </center> |<center> 1 </center> |<center> 0 </center> |<center> ... </center> |
-|**onset_time** | <center> 0 </center> |<center> 1.5 </center> |<center> 3 </center> |<center> 4.5 </center> |<center> ... </center> |
+|  <center>Unnamed</center> |  <center>0</center> |  <center>1</center> |  <center>2</center> |  <center>3</center> |  <center>4</center> |<center>5</center> | <center>36/center> | <center>7</center> | <center>8</center> | <center>9</center> | <center>3</center> | 
+|:--------|:--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|
+|**blockID** | <center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> ... </center> |
+|**trial** | <center> 1 </center> |<center> 2 </center> |<center> 3 </center> |<center> 4 </center> |<center> 5 </center> |<center> 6 </center> |<center> 7</center> |<center> 8 </center> |<center> 9 </center> |<center> 10 </center> |<center> ... </center> |
+|**category** | <center> 3 </center> |<center> 3 </center> |<center> 3 </center> |<center> 3</center> |<center> 3 </center> |<center> 3 </center> |<center> 3</center> |<center> 3 </center> |<center> 3 </center> |<center> 3 </center> |<center> ... </center> |
+|**imageID** | <center> 28 </center> |<center> 19 </center> |<center> 8 </center> |<center> 4 </center> |<center> 1 </center> |<center> 12 </center> |<center> 21 </center> |<center> 13 </center> |<center> 31 </center> |<center> 43 </center> |<center> ... </center> |
+|**target_ness** | <center> 0 </center> |<center> 0 </center> |<center> 1 </center> |<center> 0 </center> |<center> 0 </center> |<center> 0 </center> |<center> 1 </center> |<center> 0 </center> |<center> 0 </center> |<center> 0 </center> |<center> ... </center> |
+|**onset_time** | <center> 0 </center> |<center> 1.5 </center> |<center> 3 </center> |<center> 4.5 </center> |<center> 6 </center> |<center> 7.5 </center> |<center> 9 </center> |<center> 10.5 </center> |<center> 12 </center> |<center> 13.5 </center> |<center> ... </center> |
 
 * blockID:
 * trial:
