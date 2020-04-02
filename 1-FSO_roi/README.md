@@ -46,8 +46,11 @@
 |**target_ness** | <center> 0 </center> |<center> 0 </center> |<center> 1 </center> |<center> 0 </center> |<center> ... </center> |
 |**onset_time** | <center> 0 </center> |<center> 1.5 </center> |<center> 3 </center> |<center> 4.5 </center> |<center> ... </center> |
 
+
+* 아래와 같이 make_matrix.py 를 실행합니다. 
+
 ```
-make_matrix.py [subject_name]
+python make_matrix.py [subject_name]
 ```
 
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 1_matrix.csv 파일이 만들어집니다
