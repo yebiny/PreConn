@@ -1,11 +1,24 @@
 # Face Scene Object ROI
 
+
+1-FSO_roi\
+├── README.md\
+├── exe_this.py\
+├── make_matrix.py\
+├── structure.psyexp\
+├── stim\
+   ├── face\
+   ├── imginfo.txt\
+   ├── object\
+   └── scene
+
+## 1. 실험 구성
+
 ![res3](info/model-block.png)
 
 
 ![res3](info/model-trial.png)
 
-## 1. 실험 구성
 
 * 12개의 Block 으로 이루어져 있습니다.
 * Block의 종류는 총 3가지, Face, Scene, Object로 이루어져 있습니다.
@@ -17,16 +30,6 @@
 * target 일때 이미지는 직전 이미지와 동일한 이미지가 출력됩니다. 
 
 
-1-FSO_roi\
-├── README.md\
-├── exe_this.py\
-├── make_matrix.py\
-├── structure.psyexp\
-├── stim\
-   ├── face\
-   ├── imginfo.txt\
-   ├── object\
-   └── scene\
 
 ## 2. 실험 진행
 
