@@ -68,7 +68,7 @@ def make_matrix_list():
     np.random.shuffle(o_img_idx)
     for i in range(3):
         for j in range(48):
-			idx = i*48+j 
+            idx = i*48+j 
             if category[idx] == 1:
                 imageID.append(f_img_idx[j])
             elif category[idx] == 2:

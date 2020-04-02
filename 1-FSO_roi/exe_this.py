@@ -46,7 +46,10 @@ print(matrix)
 category_list= matrix.loc[2]
 idx_list = matrix.loc[3]
 target_list = matrix.loc[4]
-
+# o_list for object images
+o_list=[]
+for f in os.listdir('./stim/object/'):
+    o_list.append(f)
 
 # Store info about the experiment session
 psychopyVersion = '2020.1.0'
@@ -390,16 +393,20 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
         routineTimer.add(1.500000)
         # update component parameters for each repeat
         
+        if target_list[idx] == 1:
+            img_idx = int(idx_list[idx-1])
+        else: img_idx = int(idx_list[idx])
+        
         if category_list[idx] == 1:
             img_dir = './stim/face/face_'
+            this_img = img_dir+str(img_idx)
         elif category_list[idx] == 2:
             img_dir = './stim/scene/scene_'
+            this_img = img_dir+str(img_idx)
         elif category_list[idx] == 3:
-            img_dir = './stim/object/face_'
-        this_img = idx_list[idx]
-        if target_list[idx] == 1:
-            this_img = idx_list[idx-1]
-        this_img = img_dir+str(int(this_img))
+            img_dir = './stim/object/'
+            this_img = img_dir+o_list[img_idx]
+	
         print(this_img, 'is target? ', int(target_list[idx]))
         Image.setImage(this_img)
         
