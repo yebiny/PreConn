@@ -37,3 +37,7 @@ python exe_this.py [subject_name]
 ```
 
 * **[subject_name] / matrix / 1_matrix.csv** 파일을 가져오고 그 정보를 바탕으로 실험을 진행합니다. 
+
+### 2-3. Check Data
+
+실험 데이터는 **[subject_name] / data / 'exp_1_..'** 이라는 이름으로 저장됩니다. 
