@@ -35,7 +35,7 @@
 
 ### 2-1. Make personal matrix
 
-* matrix format 은 다음과 같습니다.
+#### Matrix format
 
 |  <center>Unnamed</center> |  <center>0</center> |  <center>1</center> |  <center>2</center> |  <center>3</center> |  <center>4</center> |
 |:--------|:--------:|--------:|--------:|--------:|--------:|
@@ -46,7 +46,16 @@
 |**target_ness** | <center> 0 </center> |<center> 0 </center> |<center> 1 </center> |<center> 0 </center> |<center> ... </center> |
 |**onset_time** | <center> 0 </center> |<center> 1.5 </center> |<center> 3 </center> |<center> 4.5 </center> |<center> ... </center> |
 
-* 아래와 같이 make_matrix.py 를 실행합니다. 
+* blockID:
+* trial:
+* category:
+* imageID:
+* target_ness:
+* onset_time:
+
+
+#### Make matrix.csv file
+
 
 ```
 python make_matrix.py [subject_name]
@@ -59,8 +68,6 @@ python make_matrix.py [subject_name]
 └  matrix\
    └─ 1_matrix.csv\
 └ personal_info.txt
-
-
 
 
 ### 2-2. Run the executable file
