@@ -58,16 +58,8 @@ python make_matrix.py [subject_name] [ order ]
 
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2-1_matrix.csv~ 2-4_matrix.csv 파일이 만들어집니다
 
-── test\
-    ├── data\
-    ├── matrix\
-    │   ├── 1_matrix.csv\
-    │   ├── 2-1_matrix.csv\
-    │   ├── 2-2_matrix.csv\
-    │   ├── 2-3_matrix.csv\
-    │   └── 2-4_matrix.csv\
-    └── personal_info.txt\
 
+ <img src="info/matrix.png" width="200" height="100">
 ---
 
 ### 2-2. Make Ordering matrix
@@ -91,7 +83,7 @@ python ordering.py [subject_name]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2_ordering.csv 파일이 만들어집니다
 
 
-![res3](info/matrix.png)
+ <img src="info/ordering.png" width="200" height="100">
 
 ### 2-3. Run the executable file
 
@@ -103,7 +95,6 @@ python exe_this.py [subject_name] [ order ]
 * **[subject_name] / matrix / 2_ordering.csv** 파일을 이용해 해당 [ order ]의 Scene/ Object trial을 진행합니다. 
 
 
-![res3](info/ordering.png)
 
 * 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.
 
