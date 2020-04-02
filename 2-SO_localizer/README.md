@@ -5,7 +5,7 @@
 
 ## 1. 실험 구성
 
-![res3](info/model-block.jpeg)
+![res3](info/model-block.png)
 
 
 * 이 실험은 총 4번이 반복됩니다.
@@ -14,7 +14,7 @@
 * 한 Block은 18s 입니다.  
 * 한 Block이 끝나면 18s 동안 Rest 단계가 있습니다.
 
-![res3](info/model-trial.jpeg)
+![res3](info/model-trial.png)
 
 * 한 Block에는 12번의 trial이 시행됩니다. 
 * 한 trial 에는 Scene 이미지 한장과 Object 이미지 한장이 겹쳐져서 0.5s 동안 출력됩니다.
