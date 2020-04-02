@@ -109,7 +109,7 @@ python exe_this.py [subject_name] [ order ]
 
 ### 3-2. Check Data
 
-* 실험 데이터는 'exp_2-[order]' 라는 이름으로  **[subject_name] / data /** 에 저장됩니다.
+* 실험 데이터는 **exp_2-[order]** 라는 이름으로  **[subject_name] / data /** 에 저장됩니다.
 
 
 ><img src="info/tree-data.png" width="400">
