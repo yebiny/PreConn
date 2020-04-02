@@ -25,7 +25,7 @@
 
 ---
 
-## 2. 실험 진행
+## 2. 실험 준비
 
 ### 2-1. Make personal matrix
 
@@ -59,7 +59,7 @@ python make_matrix.py [subject_name] [ order ]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2-1_matrix.csv~ 2-4_matrix.csv 파일이 만들어집니다
 
 
- <img src="info/matrix.png" width="200" height="300">
+ <img src="info/matrix.png" width="200" height="230">
 
 ---
 
@@ -84,11 +84,16 @@ python ordering.py [subject_name]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2_ordering.csv 파일이 만들어집니다
 
 
- <img src="info/ordering.png" width="200" height="400">
+ <img src="info/ordering.png" width="200" height="250">
+
+
+* 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.
 
 ---
 
-### 2-3. Run the executable file
+## 3. 실험 진행
+
+### 3-1. Run the executable file
 
 ```
 python exe_this.py [subject_name] [ order ]
@@ -99,10 +104,10 @@ python exe_this.py [subject_name] [ order ]
 
 
 
-* 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.
-
 ---
 
-### 2-4. Check Data
+### 3-2. Check Data
 
 * 실험 데이터는 'exp_2-[order]' 라는 이름으로  **[subject_name] / data /** 에 저장됩니다.
+
+---
