@@ -15,19 +15,21 @@
 
 ![res3](info/model-block.jpeg)
 
+
+* 이 실험은 총 4번이 반복됩니다.
+* 한 번의 실험마다 Object or Scene 카테고리가 부여됩니다. 
+* 한 실험은 12개의 Block 으로 이루어져 있습니다.
+* 한 Block은 18s 입니다.  
+* 한 Block이 끝나면 18s 동안 Rest 단계가 있습니다.
+
 ![res3](info/model-trial.jpeg)
 
-
-* 12개의 Block 으로 이루어져 있습니다.
-* 한 Block에는 12개의 trial이 시행됩니다. 
+* 한 Block에는 12번의 trial이 시행됩니다. 
 * 한 trial 에는 Scene 이미지 한장과 Object 이미지 한장이 겹쳐져서 0.5s 동안 출력됩니다.
 * 한 trial 이후에는 1s 동안 빈화면이 출력됩니다.
-* 한 Block은 1.5 * 12 = 총 18초 입니다.  
-* 한 Block이 끝나면 18초 동안 Rest 단계가 있습니다.
-* 이미지는 Scene, Object 각각 12(block) * 12(trial) 총 144장씩 존재합니다.
+* 이미지는 Scene, Object 각각 12(block) * 12(trial) 144장씩 존재합니다.
 * target은 한 블럭 안에 최소 1번에서 최대 3번까지 랜덤으로 존재합니다.
-* target일때 이미지는 직전 이미지와 동일한 이미지가 출력됩니다. 
-* 이 실험은 총 4번이 반복됩니다.
+* target일때 각 실험의 카테고리에 따라 카테고리에 해당하는 이미지만 직전 이미지와 동일한 이미지가 출력됩니다. 
 
 
 
