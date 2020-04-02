@@ -1,14 +1,6 @@
 # Scene Object Localizer
 
-
-├── 2-SO_localizer\
-│   ├── README.md\
-│   ├── exe_this.py\
-│   ├── info\
-│   ├── make_matrix.py\
-│   ├── ordering.py\
-│   ├── stim\
-│   └── structure.psyexp
+**실험목표**
 
 
 ## 1. 실험 구성
