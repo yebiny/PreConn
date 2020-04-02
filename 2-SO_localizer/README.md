@@ -2,6 +2,7 @@
 
 **실험목표**
 
+---
 
 ## 1. 실험 구성
 
@@ -59,9 +60,8 @@ python make_matrix.py [subject_name] [ order ]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2-1_matrix.csv~ 2-4_matrix.csv 파일이 만들어집니다
 
 
- <img src="info/matrix.png" width="200" height="230">
+ <img src="info/matrix.png" width="150" height="150">
 
----
 
 ### 2-2. Make Ordering matrix
 
@@ -84,7 +84,7 @@ python ordering.py [subject_name]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2_ordering.csv 파일이 만들어집니다
 
 
- <img src="info/ordering.png" width="200" height="250">
+ <img src="info/ordering.png" width="150" height="150">
 
 
 * 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.
@@ -102,9 +102,6 @@ python exe_this.py [subject_name] [ order ]
 * **[subject_name] / matrix / 2-[order]_matrix.csv** 파일의 정보를 바탕으로 실험이 진행됩니다. 
 * **[subject_name] / matrix / 2_ordering.csv** 파일을 이용해 해당 [ order ]의 Scene/ Object trial을 진행합니다. 
 
-
-
----
 
 ### 3-2. Check Data
 
