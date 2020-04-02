@@ -60,7 +60,7 @@ python make_matrix.py [subject_name] [ order ]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 **2-1_matrix.csv~ 2-4_matrix.csv** 파일이 만들어집니다
 
 
-* <img src="info/matrix.png" width="200" height="190">
+><img src="info/tree-matrix.png" width="200">
 
 
 ### 2-2. Make Ordering matrix
@@ -87,7 +87,7 @@ python ordering.py [subject_name]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 **2_ordering.csv** 파일이 만들어집니다
 
 
-* <img src="info/ordering.png" width="200" height="200">
+><img src="info/tree-ordering.png" width="200">
 
 
 * 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.
@@ -109,5 +109,8 @@ python exe_this.py [subject_name] [ order ]
 ### 3-2. Check Data
 
 * 실험 데이터는 'exp_2-[order]' 라는 이름으로  **[subject_name] / data /** 에 저장됩니다.
+
+
+><img src="info/tree-data.png" width="200">
 
 ---
