@@ -1,6 +1,7 @@
 # Face Scene Object .. ROI
 
 
+## 실험 구성
 
 1-FSO_roi\
 ├── README.md\
@@ -13,7 +14,9 @@
    ├── object\
    └── scene\
 
-## 1. Make personal matrix
+## 실험 진행
+
+### 1. Make personal matrix
   
 ```
 make_matrix.py [subject_name]
@@ -27,7 +30,7 @@ make_matrix.py [subject_name]
    └─ 1_matrix.csv\
 └ personal_info.txt
 
-## 2. Run the executable file
+### 2. Run the executable file
 
 ```
 python exe_this.py [subject_name]
