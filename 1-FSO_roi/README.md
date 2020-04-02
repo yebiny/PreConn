@@ -22,7 +22,7 @@
 make_matrix.py [subject_name]
 ```
 
-* 해당 subject directory/matrix 디렉토리 안에 다음과 같이 1_matrix.csv 파일이 만들어집니다
+* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 1_matrix.csv 파일이 만들어집니다
 
 [subject_name] \
 └  data\
@@ -36,4 +36,4 @@ make_matrix.py [subject_name]
 python exe_this.py [subject_name]
 ```
 
-* [subject_name]/matrix/1_matrix.csv 파일을 가져오고 그 정보를 바탕으로 실험을 진행합니다. 
+* **[subject_name] / matrix / 1_matrix.csv** 파일을 가져오고 그 정보를 바탕으로 실험을 진행합니다. 
