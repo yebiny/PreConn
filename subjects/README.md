@@ -17,5 +17,14 @@ test_01 \
 └── personal_info.txt 
 
 
-## 2. Make Personal Matrix 
+### personal_info.txt
 
+* 실험자에 대한 정보를 저장합니다. 
+
+### data 
+
+* 각 실험에 대한 결과가 data 에 저장됩니다.
+
+### matrix
+
+* 각 실험에 필요한 정보가 들어있는 개인별 matrix가 csv 파일 형식으로 저장됩니다. 
