@@ -11,11 +11,7 @@ bash make_subdir.sh [directory name]
 ```
 * 'test_01'이라는 이름으로 subject directory를 생성하면 하위 폴더가 다음과 같이 만들어집니다.
 
-test_01 \
-├── data \
-├── matrix \
-└── personal_info.txt 
-
+![](./info/tree_subejct.png)
 
 ### personal_info.txt
 
