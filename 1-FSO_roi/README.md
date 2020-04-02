@@ -35,7 +35,7 @@
 
 ### 2-1. Make personal matrix
 
-#### matrix format 은 다음과 같습니다.
+* matrix format 은 다음과 같습니다.
 
 |  <center>Unnamed</center> |  <center>0</center> |  <center>1</center> |  <center>2</center> |  <center>3</center> |  <center>4</center> |
 |:--------|:--------:|--------:|--------:|--------:|--------:|
@@ -46,14 +46,13 @@
 |**target_ness** | <center> 0 </center> |<center> 0 </center> |<center> 1 </center> |<center> 0 </center> |<center> ... </center> |
 |**onset_time** | <center> 0 </center> |<center> 1.5 </center> |<center> 3 </center> |<center> 4.5 </center> |<center> ... </center> |
 
-
-#### 아래와 같이 make_matrix.py 를 실행합니다. 
+* 아래와 같이 make_matrix.py 를 실행합니다. 
 
 ```
 python make_matrix.py [subject_name]
 ```
 
-#### **[subject_name] / matrix** 디렉토리 안에 다음과 같이 1_matrix.csv 파일이 만들어집니다
+* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 1_matrix.csv 파일이 만들어집니다
 
 [subject_name] \
 └  data\
@@ -70,8 +69,8 @@ python make_matrix.py [subject_name]
 python exe_this.py [subject_name]
 ```
 
-#### **[subject_name] / matrix / 1_matrix.csv** 파일을 가져오고 그 정보를 바탕으로 실험을 진행합니다. 
+* **[subject_name] / matrix / 1_matrix.csv** 파일을 가져오고 그 정보를 바탕으로 실험을 진행합니다. 
 
 ### 2-3. Check Data
 
-#### 실험 데이터는 'exp_1_..' 이라는 이름으로  ** [subject_name] / data / **에 아래와 같이 저장됩니다.
+* 실험 데이터는 'exp_1_..' 이라는 이름으로  ** [subject_name] / data / **에 아래와 같이 저장됩니다.
