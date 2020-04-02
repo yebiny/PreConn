@@ -23,7 +23,7 @@
 * target은 한 블럭 안에 최소 1번에서 최대 3번까지 랜덤으로 존재합니다.
 * target일때 각 실험의 카테고리에 따라 카테고리에 해당하는 이미지만 직전 이미지와 동일한 이미지가 출력됩니다. 
 
-
+---
 
 ## 2. 실험 진행
 
@@ -59,7 +59,8 @@ python make_matrix.py [subject_name] [ order ]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2-1_matrix.csv~ 2-4_matrix.csv 파일이 만들어집니다
 
 
- <img src="info/matrix.png" width="200" height="100">
+ <img src="info/matrix.png" width="200" height="300">
+
 ---
 
 ### 2-2. Make Ordering matrix
@@ -83,7 +84,9 @@ python ordering.py [subject_name]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2_ordering.csv 파일이 만들어집니다
 
 
- <img src="info/ordering.png" width="200" height="100">
+ <img src="info/ordering.png" width="200" height="400">
+
+---
 
 ### 2-3. Run the executable file
 
