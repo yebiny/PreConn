@@ -5,7 +5,7 @@
 
 ## 1. 실험 구성
 
-![res3](info/model-block.png)
+![res3](info/model-block.jpeg)
 
 
 * 이 실험은 총 4번이 반복됩니다.
@@ -14,7 +14,7 @@
 * 한 Block은 18s 입니다.  
 * 한 Block이 끝나면 18s 동안 Rest 단계가 있습니다.
 
-![res3](info/model-trial.png)
+![res3](info/model-trial.jpeg)
 
 * 한 Block에는 12번의 trial이 시행됩니다. 
 * 한 trial 에는 Scene 이미지 한장과 Object 이미지 한장이 겹쳐져서 0.5s 동안 출력됩니다.
@@ -91,7 +91,7 @@ python ordering.py [subject_name]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2_ordering.csv 파일이 만들어집니다
 
 
-![res3](info/matrix.jpeg)
+![res3](info/matrix.png)
 
 ### 2-3. Run the executable file
 
@@ -103,7 +103,7 @@ python exe_this.py [subject_name] [ order ]
 * **[subject_name] / matrix / 2_ordering.csv** 파일을 이용해 해당 [ order ]의 Scene/ Object trial을 진행합니다. 
 
 
-![res3](info/ordering.jpeg)
+![res3](info/ordering.png)
 
 * 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.
 
