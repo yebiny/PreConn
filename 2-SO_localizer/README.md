@@ -1,33 +1,33 @@
-# Face Scene Object ROI
+# Scene Object Localizer
 
 
-1-FSO_roi\
-├── README.md\
-├── exe_this.py\
-├── make_matrix.py\
-├── structure.psyexp\
-├── stim\
-   ├── face\
-   ├── imginfo.txt\
-   ├── object\
-   └── scene
+├── 2-SO_localizer\
+│   ├── README.md\
+│   ├── exe_this.py\
+│   ├── info\
+│   ├── make_matrix.py\
+│   ├── ordering.py\
+│   ├── stim\
+│   └── structure.psyexp
+
 
 ## 1. 실험 구성
 
 ![res3](info/model-block.png)
 
-
 ![res3](info/model-trial.png)
 
 
 * 12개의 Block 으로 이루어져 있습니다.
-* Block의 종류는 총 3가지, Face, Scene, Object로 이루어져 있습니다.
-* 한 Block이 시행되면 Block 종류에 따른 12개의 이미지가 각 trial마다 출력됩니다. 
+* 한 Block에는 12개의 trial이 시행됩니다. 
+* 한 trial 에는 Scene 이미지 한장과 Object 이미지 한장이 겹쳐져서 0.5s 동안 출력됩니다.
+* 한 trial 이후에는 1s 동안 빈화면이 출력됩니다.
 * 한 Block은 1.5 * 12 = 총 18초 입니다.  
-* 한 Block이 끝나면 12초 동안 Rest 단계가 있습니다.
-* 이미지는 Face, Scene, Object 각각 48장이 존재합니다.
+* 한 Block이 끝나면 18초 동안 Rest 단계가 있습니다.
+* 이미지는 Scene, Object 각각 12(block) * 12(trial) 총 144장씩 존재합니다.
 * target은 한 블럭 안에 최소 1번에서 최대 3번까지 랜덤으로 존재합니다.
-* target 일때 이미지는 직전 이미지와 동일한 이미지가 출력됩니다. 
+* target일때 이미지는 직전 이미지와 동일한 이미지가 출력됩니다. 
+* 이 실험은 총 4번이 반복됩니다.
 
 
 
@@ -41,34 +41,69 @@
 |:--------|:--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|
 |**blockID** | <center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> 1 </center> |<center> ... </center> |
 |**trial** | <center> 1 </center> |<center> 2 </center> |<center> 3 </center> |<center> 4 </center> |<center> 5 </center> |<center> 6 </center> |<center> 7</center> |<center> 8 </center> |<center> 9 </center> |<center> 10 </center> |<center> ... </center> |
-|**category** | <center> 3 </center> |<center> 3 </center> |<center> 3 </center> |<center> 3</center> |<center> 3 </center> |<center> 3 </center> |<center> 3</center> |<center> 3 </center> |<center> 3 </center> |<center> 3 </center> |<center> ... </center> |
-|**imageID** | <center> 28 </center> |<center> 19 </center> |<center> 8 </center> |<center> 4 </center> |<center> 1 </center> |<center> 12 </center> |<center> 21 </center> |<center> 13 </center> |<center> 31 </center> |<center> 43 </center> |<center> ... </center> |
+|**s_imageID** | <center> 2 </center> |<center> 9 </center> |<center> 28 </center> |<center>14 </center> |<center> 13 </center> |<center> 12 </center> |<center> 32 </center> |<center> 33 </center> |<center> 3 </center> |<center> 13 </center> |<center> ... </center> |
+|**o_imageID** | <center> 28 </center> |<center> 19 </center> |<center> 8 </center> |<center> 4 </center> |<center> 1 </center> |<center> 12 </center> |<center> 21 </center> |<center> 13 </center> |<center> 31 </center> |<center> 43 </center> |<center> ... </center> |
 |**target_ness** | <center> 0 </center> |<center> 0 </center> |<center> 1 </center> |<center> 0 </center> |<center> 0 </center> |<center> 0 </center> |<center> 1 </center> |<center> 0 </center> |<center> 0 </center> |<center> 0 </center> |<center> ... </center> |
 |**onset_time** | <center> 0 </center> |<center> 1.5 </center> |<center> 3 </center> |<center> 4.5 </center> |<center> 6 </center> |<center> 7.5 </center> |<center> 9 </center> |<center> 10.5 </center> |<center> 12 </center> |<center> 13.5 </center> |<center> ... </center> |
 
 * blockID:
 * trial:
-* category:
-* imageID:
+* s_imageID:
+* o_imageID:
 * target_ness:
 * onset_time:
 
 
 #### Make matrix.csv file
 
+```
+python make_matrix.py [subject_name] [ order ]
+```
+* [ order ] 에는 1에서 4까지의 숫자가 들어 갑니다.
+* 실험은 총 4번이 시행되기 때문에 matrix도 총 4개가 필요 합니다. 
+
+* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2-1_matrix.csv~ 2-4_matrix.csv 파일이 만들어집니다
+
+── test\
+    ├── data\
+    ├── matrix\
+    │   ├── 1_matrix.csv\
+    │   ├── 2-1_matrix.csv\
+    │   ├── 2-2_matrix.csv\
+    │   ├── 2-3_matrix.csv\
+    │   └── 2-4_matrix.csv\
+    └── personal_info.txt\
+
+### 2-3 Make Ordering matrix
+
+#### Ordering matrix format
+
+
+|  <center>Unnamed</center> |  <center>0</center> |  <center>0</center> | 
+|:--------|:--------:|--------:|
+|**0** | <center> 1 </center> |<center> S </center> |
+|**1** | <center> 2 </center> |<center> O </center> |
+|**2** | <center> 3 </center> |<center> O </center> |
+|**3** | <center> 4 </center> |<center> S </center> |
+
+#### Make orering.csv file
 
 ```
-python make_matrix.py [subject_name]
+python ordering.py [subject_name]
 ```
 
-* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 1_matrix.csv 파일이 만들어집니다
+* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2_ordering.csv 파일이 만들어집니다
 
-[subject_name] \
-└  data\
-└  matrix\
-   └─ 1_matrix.csv\
-└ personal_info.txt
-
+── test\
+    ├── data\
+    ├── matrix\
+    │   ├── 1_matrix.csv\
+    │   ├── 2-1_matrix.csv\
+    │   ├── 2-2_matrix.csv\
+    │   ├── 2-3_matrix.csv\
+    │   ├── 2-4_matrix.csv\
+    │   └── 2_ordering.csv\
+    └── personal_info.txt\
 
 ### 2-2. Run the executable file
 
