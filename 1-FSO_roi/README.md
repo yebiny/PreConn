@@ -69,6 +69,6 @@ python exe_this.py [subject_name]
 
 * 실험 데이터는 **exp_1_..** 이라는 이름으로  **[subject_name] / data /** 에 아래와 같이 저장됩니다.
 
-><img src="info/data.png" width="250">
+><img src="info/tree-data.png" width="280">
 
 ---
