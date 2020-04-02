@@ -55,7 +55,7 @@ python make_matrix.py [subject_name]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 1_matrix.csv 파일이 만들어집니다
 
 
-* <img src="info/tree-matrix.png" width="200" height="190">
+* <img src="info/tree-matrix.png" width="200">
 
 ### 2-2. Run the executable file
 
