@@ -55,7 +55,7 @@ python make_matrix.py [subject_name]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 1_matrix.csv 파일이 만들어집니다
 
 
-><img src="info/tree.png" width="250">
+><img src="info/tree.png" width="230">
 
 ### 2-2. Run the executable file
 
@@ -69,6 +69,6 @@ python exe_this.py [subject_name]
 
 * 실험 데이터는 **exp_1_..** 이라는 이름으로  **[subject_name] / data /** 에 아래와 같이 저장됩니다.
 
-><img src="info/tree-data.png" width="280">
+><img src="info/tree-data.png" width="380">
 
 ---
