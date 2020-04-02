@@ -57,10 +57,10 @@ python make_matrix.py [subject_name] [ order ]
 * [ order ] 에는 1에서 4까지의 숫자가 들어 갑니다.
 * 실험은 총 4번이 시행되기 때문에 matrix도 총 4개가 필요 합니다. 
 
-* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2-1_matrix.csv~ 2-4_matrix.csv 파일이 만들어집니다
+* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 **2-1_matrix.csv~ 2-4_matrix.csv** 파일이 만들어집니다
 
 
-* <img src="info/matrix.png" width="200" height="180">
+* <img src="info/matrix.png" width="200" height="190">
 
 
 ### 2-2. Make Ordering matrix
@@ -84,10 +84,10 @@ python make_matrix.py [subject_name] [ order ]
 python ordering.py [subject_name]
 ```
 
-* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2_ordering.csv 파일이 만들어집니다
+* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 **2_ordering.csv** 파일이 만들어집니다
 
 
-* <img src="info/ordering.png" width="200" height="190">
+* <img src="info/ordering.png" width="200" height="200">
 
 
 * 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.

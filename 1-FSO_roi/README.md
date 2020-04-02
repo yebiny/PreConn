@@ -1,16 +1,7 @@
 # Face Scene Object ROI
 
 
-1-FSO_roi\
-├── README.md\
-├── exe_this.py\
-├── make_matrix.py\
-├── structure.psyexp\
-├── stim\
-   ├── face\
-   ├── imginfo.txt\
-   ├── object\
-   └── scene
+**실험목표**
 
 ## 1. 실험 구성
 
@@ -63,12 +54,8 @@ python make_matrix.py [subject_name]
 
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 1_matrix.csv 파일이 만들어집니다
 
-[subject_name] \
-└  data\
-└  matrix\
-   └─ 1_matrix.csv\
-└ personal_info.txt
 
+* <img src="info/tree-matrix.jpeg" width="200" height="190">
 
 ### 2-2. Run the executable file
 
