@@ -75,6 +75,9 @@ python make_matrix.py [subject_name] [ order ]
 |**2** | <center> 3 </center> |<center> O </center> |
 |**3** | <center> 4 </center> |<center> S </center> |
 
+* ordering matrix에는각 n 번째 실험마다 해당하는 카테고리 (S or O) 정보가 들어있습니다. 
+
+
 #### Make orering.csv file
 
 ```
@@ -84,7 +87,7 @@ python ordering.py [subject_name]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2_ordering.csv 파일이 만들어집니다
 
 
-* <img src="info/ordering.png" width="200" height="180">
+* <img src="info/ordering.png" width="200" height="190">
 
 
 * 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.
