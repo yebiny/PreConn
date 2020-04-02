@@ -57,4 +57,4 @@ python exe_this.py [subject_name]
 
 ### 2-3. Check Data
 
-실험 데이터는 **[subject_name] / data / 'exp_1_..'** 이라는 이름으로 저장됩니다. 
+* 실험 데이터는 **[subject_name] / data / 'exp_1_..'** 이라는 이름으로 저장됩니다. 
