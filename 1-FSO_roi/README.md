@@ -1,9 +1,9 @@
 # Face Scene Object ROI
 
-![res3](./1-FSO_roi/info/model-block.png)
+![res3](info/model-block.png)
 
 
-![res3](./1-FSO_roi/info/model-trial.png)
+![res3](info/model-trial.png)
 
 ## 1. 실험 구성
 
