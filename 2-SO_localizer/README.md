@@ -13,9 +13,9 @@
 
 ## 1. 실험 구성
 
-![res3](info/model-block.png)
+![res3](info/model-block.jpeg)
 
-![res3](info/model-trial.png)
+![res3](info/model-trial.jpeg)
 
 
 * 12개의 Block 으로 이루어져 있습니다.
