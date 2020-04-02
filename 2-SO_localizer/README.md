@@ -60,7 +60,7 @@ python make_matrix.py [subject_name] [ order ]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2-1_matrix.csv~ 2-4_matrix.csv 파일이 만들어집니다
 
 
- <img src="info/matrix.png" width="200" height="180">
+* <img src="info/matrix.png" width="200" height="180">
 
 
 ### 2-2. Make Ordering matrix
@@ -84,7 +84,7 @@ python ordering.py [subject_name]
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 2_ordering.csv 파일이 만들어집니다
 
 
- <img src="info/ordering.png" width="200" height="180">
+* <img src="info/ordering.png" width="200" height="180">
 
 
 * 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.
