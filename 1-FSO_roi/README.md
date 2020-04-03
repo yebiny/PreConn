@@ -20,8 +20,6 @@
 * target은 한 블럭 안에 최소 1번에서 최대 3번까지 랜덤으로 존재합니다.
 * target 일때 이미지는 직전 이미지와 동일한 이미지가 출력됩니다. 
 
----
-
 ## 2. 실험 준비
 
 ### 2-1. Make personal matrix
@@ -52,14 +50,10 @@
 python make_matrix.py [subject_name]
 ```
 
-* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 1_matrix.csv 파일이 만들어집니다
-
+* [ subject_name ]/matrix 에 **1_matrix.csv** 파일이 만들어집니다
 
 ><img src="info/tree.png" width="230">
 
-* 이제 실험을 진행할 준비가 다 되었습니다!
-
----
 
 ## 3. 실험 진행
 
@@ -69,11 +63,12 @@ python make_matrix.py [subject_name]
 python exe_this.py [subject_name]
 ```
 
-* **[subject_name] / matrix / 1_matrix.csv** 파일을 가져오고 그 정보를 바탕으로 실험을 진행합니다. 
+* [ subject_name ] 의 matrix 파일을 가져와 그 정보를 바탕으로 실험이 진행합니다. 
+
 
 ### 3-2. Check Data
 
-* 실험 데이터는 **exp_1_..** 이라는 이름으로  **[subject_name] / data /** 에 아래와 같이 저장됩니다.
+* 데이터는 **[subject_name] / data /** 에 아래와 같이 저장됩니다.
 
 ><img src="info/tree-data.png" width="380">
 
