@@ -2,9 +2,10 @@
 
 **실험목표**
 
----
+
 
 ## 1. 실험 구성
+---
 
 ![res3](info/model-block.jpeg)
 
@@ -55,11 +56,10 @@
 ```
 python make_matrix.py [subject_name] [ order ]
 ```
-* [ order ] 에는 1에서 4까지의 숫자가 들어 갑니다.
 * 실험은 총 4번이 시행되기 때문에 matrix도 총 4개가 필요 합니다. 
-
-* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 **2-1_matrix.csv~ 2-4_matrix.csv** 파일이 만들어집니다
-
+* [ subject_name ] : 해당 subject directory
+* [ order ] : 1 부터 4까지의 숫자
+* **[subject_name] / matrix** 안에 아래와 같이 **2-1_matrix.csv~ 2-4_matrix.csv** 파일이 만들어집니다
 
 ><img src="info/tree-matrix.png" width="230">
 
@@ -76,7 +76,7 @@ python make_matrix.py [subject_name] [ order ]
 |**2** | <center> 3 </center> |<center> O </center> |
 |**3** | <center> 4 </center> |<center> S </center> |
 
-* ordering matrix에는각 n 번째 실험마다 해당하는 카테고리 (S or O) 정보가 들어있습니다. 
+* ordering matrix에는각 n 번째 실험마다 해당하는 카테고리 (Scene or Object) 정보가 들어있습니다. 
 
 
 #### Make orering.csv file
@@ -85,13 +85,14 @@ python make_matrix.py [subject_name] [ order ]
 python ordering.py [subject_name]
 ```
 
+* 네번의 실험에 대한 카테고리를 정해 줍니다.
 * **[subject_name] / matrix** 디렉토리 안에 다음과 같이 **2_ordering.csv** 파일이 만들어집니다
-
 
 ><img src="info/tree-ordering.png" width="230">
 
 
 * 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.
+
 
 ---
 
@@ -103,7 +104,7 @@ python ordering.py [subject_name]
 python exe_this.py [subject_name] [ order ]
 ```
 
-* **[subject_name] / matrix / 2-[order]_matrix.csv** 파일의 정보를 바탕으로 실험이 진행됩니다. 
+* []파일의 정보를 바탕으로 실험이 진행됩니다. 
 * **[subject_name] / matrix / 2_ordering.csv** 파일을 이용해 해당 [ order ]의 Scene/ Object trial을 진행합니다. 
 
 
