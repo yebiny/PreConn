@@ -3,10 +3,7 @@
 **실험목표**
 
 
->
-
 ## 1. 실험 구성
----
 
 ![res3](info/model-block.jpeg)
 
@@ -27,8 +24,7 @@
 * target은 한 블럭 안에 최소 1번에서 최대 3번까지 랜덤으로 존재합니다.
 * target일때 각 실험의 카테고리에 따라 카테고리에 해당하는 이미지만 직전 이미지와 동일한 이미지가 출력됩니다. 
 
----
->
+
 ## 2. 실험 준비
 
 
@@ -61,7 +57,7 @@ python make_matrix.py [subject_name] [ order ]
 * 실험은 총 4번이 시행되기 때문에 matrix도 총 4개가 필요 합니다. 
 * [ subject_name ] : 해당 subject directory
 * [ order ] : 1 부터 4까지의 숫자
-* **[subject_name] / matrix** 안에 아래와 같이 **2-1_matrix.csv~ 2-4_matrix.csv** 파일이 만들어집니다
+* 아래와 같이 [ subject_name]/matrix 에 **2-[ order ]_matrix.csv** 파일이 만들어집니다
 
 ><img src="info/tree-matrix.png" width="230">
 
@@ -69,7 +65,7 @@ python make_matrix.py [subject_name] [ order ]
 ### 2-2. Make Ordering matrix
 
 #### Ordering matrix format
-
+* ordering matrix에는각 n 번째 실험마다 해당하는 카테고리 (Scene or Object) 정보가 들어있습니다. 
 
 |  <center>Unnamed</center> |  <center>0</center> |  <center>0</center> | 
 |:--------|:--------:|--------:|
@@ -78,8 +74,6 @@ python make_matrix.py [subject_name] [ order ]
 |**2** | <center> 3 </center> |<center> O </center> |
 |**3** | <center> 4 </center> |<center> S </center> |
 
-* ordering matrix에는각 n 번째 실험마다 해당하는 카테고리 (Scene or Object) 정보가 들어있습니다. 
-
 
 #### Make orering.csv file
 
@@ -87,34 +81,28 @@ python make_matrix.py [subject_name] [ order ]
 python ordering.py [subject_name]
 ```
 
-* 네번의 실험에 대한 카테고리를 정해 줍니다.
-* 다음과 같이 [ subject_naem]/matrix 에 **2_ordering.csv** 파일이 만들어집니다
+* 4번의 실험에 대해 개별 카테고리를 정해주는 matrix를 만들어 줍니다.
+* 다음과 같이 [ subject_naem]/matrix 에 **2_ordering.csv** 파일이 생성됩니다.
 
 ><img src="info/tree-ordering.png" width="230">
 
 
-* 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.
-
-
-
 ## 3. 실험 진행
----
+
 
 ### 3-1. Run the executable file
 
 ```
 python exe_this.py [subject_name] [ order ]
 ```
-
-* []파일의 정보를 바탕으로 실험이 진행됩니다. 
-* **[subject_name] / matrix / 2_ordering.csv** 파일을 이용해 해당 [ order ]의 Scene/ Object trial을 진행합니다. 
+* [ subject_name ] : 해당 subject directory
+* [ order ] : 1 부터 4까지의 숫자
 
 
 ### 3-2. Check Data
 
 * 실험 데이터는 **exp_2-[order]** 라는 이름으로  **[subject_name] / data /** 에 저장됩니다.
 
-
 ><img src="info/tree-data.png" width="400">
 
----
+
