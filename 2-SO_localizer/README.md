@@ -26,9 +26,9 @@
 * target은 한 블럭 안에 최소 1번에서 최대 3번까지 랜덤으로 존재합니다.
 * target일때 각 실험의 카테고리에 따라 카테고리에 해당하는 이미지만 직전 이미지와 동일한 이미지가 출력됩니다. 
 
----
 
 ## 2. 실험 준비
+---
 
 ### 2-1. Make personal matrix
 
@@ -86,7 +86,7 @@ python ordering.py [subject_name]
 ```
 
 * 네번의 실험에 대한 카테고리를 정해 줍니다.
-* **[subject_name] / matrix** 디렉토리 안에 다음과 같이 **2_ordering.csv** 파일이 만들어집니다
+* 다음과 같이 [ subject_naem]/matrix 에 **2_ordering.csv** 파일이 만들어집니다
 
 ><img src="info/tree-ordering.png" width="230">
 
@@ -94,9 +94,9 @@ python ordering.py [subject_name]
 * 2-SO localizer 실험을 진행할 파일들이 모두 만들어 졌습니다. 이제 실험을 진행해 봅시다.
 
 
----
 
 ## 3. 실험 진행
+---
 
 ### 3-1. Run the executable file
 
