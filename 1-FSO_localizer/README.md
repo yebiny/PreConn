@@ -8,18 +8,20 @@
 ![res3](info/model-block.jpeg)
 
 
-![res3](info/model-trial.jpeg)
-
-
 * 이 실험은 12개의 Block 으로 이루어져 있습니다.
 * 한 Block은 시간은 18s 입니다.  
 * 한 Block이 끝나면 12s 동안 Rest 단계가 있습니다.
 * Block의 종류는 총 3가지, Face, Scene, Object로 이루어져 있습니다.
+
+![res3](info/model-trial.jpeg)
+
 * 한 Block이 시행되면 Block 종류에 따른 12개의 이미지가 각 trial마다 출력됩니다. 
 * 이미지는 0.5s 동안 출력됩니다. 
 * 이후에는 1s 동안 빈화면이 출력됩니다.
 * 이미지는 Face, Scene, Object 각각 4(block) * 12(trial) 48장씩 존재합니다.
 * 이미지의 순서는 랜덤합니다.
+
+![res3](info/model-target.jpeg)
 * target은 한 블럭 안에 최소 1번에서 최대 3번까지 랜덤으로 존재합니다.
 * target일때 이미지는 직전 이미지와 동일한 이미지가 출력됩니다. 
 
