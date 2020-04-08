@@ -52,18 +52,19 @@ for f in os.listdir('./stim/object/'):
     o_list.append(f)
 
 # Store info about the experiment session
+
 psychopyVersion = '2020.1.0'
-expName = 'test'  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '001'}
+expName = '1-fso'  # from the Builder filename that created this script
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
-expInfo['date'] = data.getDateStr()  # add a simple timestamp
 expInfo['expName'] = expName
 expInfo['psychopyVersion'] = psychopyVersion
+expInfo['date'] = 200401  # add a simple timestamp
 
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-filename ='%s/data/exp_1_%s' % (sub_dir,expInfo['date'])
+filename ='%s/data/%s_%s'%(sub_dir, expName, expInfo['date'])
 
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',

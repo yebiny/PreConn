@@ -28,6 +28,9 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+expName = '3-dia'  # from the Builder filename that created this script
+expInfo['date'] = 200401  # add a simple timestamp
+
 sub = sys.argv[1]
 
 # Ensure that relative paths start from the same directory as this script
@@ -36,12 +39,10 @@ os.chdir(_thisDir)
 
 # Store info about the experiment session
 psychopyVersion = '2020.1.2'
-expName = '3-dia'  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '001'}
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
-expInfo['date'] = 200401  # add a simple timestamp
 expInfo['expName'] = expName
 expInfo['psychopyVersion'] = psychopyVersion
 
