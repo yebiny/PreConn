@@ -1,4 +1,4 @@
-# Face Scene Object ROI
+# Face Scene Object ROI localizer
 
 
 **실험목표**
@@ -24,7 +24,6 @@
 ![res3](info/model-target.jpeg)
 * target은 한 블럭 안에 최소 1번에서 최대 3번까지 랜덤으로 존재합니다.
 * target일때 이미지는 직전 이미지와 동일한 이미지가 출력됩니다. 
-
 
 ## 2. 실험 준비
 
