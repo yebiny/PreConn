@@ -28,8 +28,12 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+expInfo = {'participant': '', 'session': '001'}
 expName = '3-dia'  # from the Builder filename that created this script
-expInfo['date'] = 200401  # add a simple timestamp
+expInfo['expName'] = expName
+expInfo['date'] = 200420  # add a simple timestamp
+psychopyVersion = '2020.1.2'
+expInfo['psychopyVersion'] = psychopyVersion
 
 sub = sys.argv[1]
 
@@ -38,13 +42,9 @@ _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-psychopyVersion = '2020.1.2'
-expInfo = {'participant': '', 'session': '001'}
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
-expInfo['expName'] = expName
-expInfo['psychopyVersion'] = psychopyVersion
 
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
 filename = _thisDir + os.sep + '../subjects/%s/data/%s_%s_%s' % (sub, expName, expInfo['participant'], expInfo['date'])
@@ -83,10 +83,10 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "Wait"
 WaitClock = core.Clock()
-
 # Initialize components for Routine "Trial"
 TrialClock = core.Clock()
 
+# Setting Polygons
 direction = +1
 
 Rec_size = 0.2
@@ -280,8 +280,10 @@ while continueRoutine:
         theseKeys = Resp_sub.getKeys(keyList=['left', 'right'], waitRelease=False)
         _Resp_sub_allKeys.extend(theseKeys)
         if len(_Resp_sub_allKeys):
-            Resp_sub.keys = _Resp_sub_allKeys[-1].name  # just the last key pressed
-            Resp_sub.rt = _Resp_sub_allKeys[-1].rt
+            Resp_sub.keys = [key.name for key in _Resp_sub_allKeys]  # storing all keys
+            Resp_sub.rt = [key.rt for key in _Resp_sub_allKeys]    
+            #Resp_sub.keys = _Resp_sub_allKeys[-1].name  # just the last key pressed
+            #Resp_sub.rt = _Resp_sub_allKeys[-1].rt
     
     # *Resp_end* updates
     waitOnFlip = False
@@ -340,6 +342,7 @@ if Resp_sub.keys in ['', [], None]:  # No response was made
 thisExp.addData('Resp_sub.keys',Resp_sub.keys)
 if Resp_sub.keys != None:  # we had a response
     thisExp.addData('Resp_sub.rt', Resp_sub.rt)
+    print(Resp_sub.keys)
 thisExp.addData('Resp_sub.started', Resp_sub.tStartRefresh)
 thisExp.addData('Resp_sub.stopped', Resp_sub.tStopRefresh)
 thisExp.nextEntry()
