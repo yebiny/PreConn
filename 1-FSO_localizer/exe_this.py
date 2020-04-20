@@ -33,26 +33,23 @@ from psychopy.hardware import keyboard
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
-
+# Matrix Setting
 sub = sys.argv[1]
 sub_dir = '../subjects/%s'%sub
 matrix_file = '1_matrix.csv'
 matrix_path  = '%s/matrix/%s'%(sub_dir, matrix_file)
-
 matrix = pd.read_csv(matrix_path)
 print("* Load Personal Matrix From [%s]"%(matrix_path))
 print(matrix)
-
 category_list= matrix.loc[2]
 idx_list = matrix.loc[3]
 target_list = matrix.loc[4]
-# o_list for object images
-o_list=[]
-for f in os.listdir('./stim/object/'):
-    o_list.append(f)
+
+stim_dir = 'stim'
+img_size = 0.2
+rest_time = 12
 
 # Store info about the experiment session
-
 psychopyVersion = '2020.1.0'
 expInfo = {'participant': '', 'session': '001'}
 expName = '1-fso'  # from the Builder filename that created this script
@@ -126,7 +123,7 @@ Image = visual.ImageStim(
     win=win,
     name='Image', 
     image=None, mask=None,
-    ori=0, pos=(0, 0), size=(0.4, 0.4),
+    ori=0, pos=(0, 0), size=(img_size,img_size),
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
@@ -399,14 +396,11 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
         else: img_idx = int(idx_list[idx])
         
         if category_list[idx] == 1:
-            img_dir = './stim/face/face_'
-            this_img = img_dir+str(img_idx)
+            this_img = '%s/face/%i.jpg'%(stim_dir,img_idx) 
         elif category_list[idx] == 2:
-            img_dir = './stim/scene/scene_'
-            this_img = img_dir+str(img_idx)
+            this_img = '%s/scene/%i.jpg'%(stim_dir,img_idx) 
         elif category_list[idx] == 3:
-            img_dir = './stim/object/'
-            this_img = img_dir+o_list[img_idx]
+            this_img = '%s/object/%i.jpg'%(stim_dir,img_idx) 
 	
         print(this_img, 'is target? ', int(target_list[idx]))
         Image.setImage(this_img)
@@ -542,7 +536,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
     
     # ------Prepare to start Routine "Rest"-------
     continueRoutine = True
-    routineTimer.add(3.000000)
+    routineTimer.add(rest_time)
     # update component parameters for each repeat
     # keep track of which components have finished
     RestComponents = [rest_dot]
