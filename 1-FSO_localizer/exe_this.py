@@ -572,7 +572,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
             rest_dot.setAutoDraw(True)
         if rest_dot.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > rest_dot.tStartRefresh + 3-frameTolerance:
+            if tThisFlipGlobal > rest_dot.tStartRefresh + rest_time-frameTolerance:
                 # keep track of stop time/frame for later
                 rest_dot.tStop = t  # not accounting for scr refresh
                 rest_dot.frameNStop = frameN  # exact frame index

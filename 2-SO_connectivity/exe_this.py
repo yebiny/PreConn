@@ -31,38 +31,40 @@ from psychopy.hardware import keyboard
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
-
-
 sub = sys.argv[1]
 exp = sys.argv[2]
+
+# matrix
 sub_dir = '../subjects/%s'%sub
 matrix_file = '2-%s_matrix.csv'%exp
 matrix_path  = '%s/matrix/%s'%(sub_dir, matrix_file)
 order_path  = '%s/matrix/2_ordering.csv'%(sub_dir)
-
 matrix = pd.read_csv(matrix_path)
+
 print("* Load Personal Matrix From [%s]"%(matrix_path))
 print(matrix)
 
 order = pd.read_csv(order_path)
 print("* Load Ordering Matrix From [%s]"%(order_path))
 print(order)
-
 order = order.loc[int(exp)-1][1]
+
 if str(order) == "S": thisTrial = "Scene"
 elif str(order) == "O": thisTrial = "Object"
 else: print("ERROR!!!!!!!!")
-
 print( "* This Trial is [ %s ]"%thisTrial)
 
-f_img_dir = './stim/face/'
-s_img_dir = './stim/scene/'
-f_idx_list = matrix.loc[2]
+o_idx_list = matrix.loc[2]
 s_idx_list = matrix.loc[3]	
 target_list = matrix.loc[4]
 
+# Setting
+stim_dir = 'stim'
 nBlock = 12
 nStim = 12
+img_size = 0.3
+opacity=0.4
+rest_time=10
 
 # Store info about the experiment session
 psychopyVersion = '2020.1.2'
@@ -134,11 +136,11 @@ wait_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "Trial"
 TrialClock = core.Clock()
-Face = visual.ImageStim(
+Object = visual.ImageStim(
     win=win,
-    name='Face', 
+    name='Object', 
     image='sin', mask=None,
-    ori=0, pos=(0, 0), size=(0.3, 0.3),
+    ori=0, pos=(0, 0), size=(img_size, img_size),
     color=[1,1,1], colorSpace='rgb', opacity=1,
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=0.0)
@@ -146,8 +148,8 @@ Scene = visual.ImageStim(
     win=win,
     name='Scene', 
     image='sin', mask=None,
-    ori=0, pos=(0, 0), size=(0.3, 0.3),
-    color=[1,1,1], colorSpace='rgb', opacity=0.4,
+    ori=0, pos=(0, 0), size=(img_size, img_size),
+    color=[1,1,1], colorSpace='rgb', opacity=opacity,
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=-1.0)
 Dot = visual.Circle(
@@ -417,22 +419,23 @@ for i, thisBlock in zip(range(nBlock), Blocks):
         continueRoutine = True
         routineTimer.add(1.500000)
         # update component parameters for each repeat
-        f_img = f_idx_list[idx]
         s_img = s_idx_list[idx]
-        if thisTrial == 'Object' and target_list[idx] ==1:
-            f_img = f_idx_list[idx-1]
+        o_img = o_idx_list[idx]
         if thisTrial == 'Scene' and target_list[idx] ==1:
             s_img = s_idx_list[idx-1]
-        f_img = f_img_dir+'face_'+str(int(f_img))
-        s_img = s_img_dir+'scene_'+str(int(s_img))
-        print(f_img, s_img, 'is target? ', int(target_list[idx]))
-        Face.setImage(f_img)
+        if thisTrial == 'Object' and target_list[idx] ==1:
+            o_img = o_idx_list[idx-1]
+        s_img = '%s/scene/%i.jpg'%(stim_dir, s_img)
+        o_img = '%s/object/%i.jpg'%(stim_dir, o_img)
+
+        print( s_img, o_img ,'is target? ', int(target_list[idx]))
+        Object.setImage(o_img)
         Scene.setImage(s_img)
         Resp.keys = []
         Resp.rt = []
         _Resp_allKeys = []
         # keep track of which components have finished
-        TrialComponents = [Face, Scene, Dot, Resp]
+        TrialComponents = [Object, Scene, Dot, Resp]
         for thisComponent in TrialComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -455,22 +458,22 @@ for i, thisBlock in zip(range(nBlock), Blocks):
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *Face* updates
-            if Face.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *Object* updates
+            if Object.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                Face.frameNStart = frameN  # exact frame index
-                Face.tStart = t  # local t and not account for scr refresh
-                Face.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(Face, 'tStartRefresh')  # time at next scr refresh
-                Face.setAutoDraw(True)
-            if Face.status == STARTED:
+                Object.frameNStart = frameN  # exact frame index
+                Object.tStart = t  # local t and not account for scr refresh
+                Object.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(Object, 'tStartRefresh')  # time at next scr refresh
+                Object.setAutoDraw(True)
+            if Object.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > Face.tStartRefresh + 0.5-frameTolerance:
+                if tThisFlipGlobal > Object.tStartRefresh + 0.5-frameTolerance:
                     # keep track of stop time/frame for later
-                    Face.tStop = t  # not accounting for scr refresh
-                    Face.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(Face, 'tStopRefresh')  # time at next scr refresh
-                    Face.setAutoDraw(False)
+                    Object.tStop = t  # not accounting for scr refresh
+                    Object.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(Object, 'tStopRefresh')  # time at next scr refresh
+                    Object.setAutoDraw(False)
             
             # *Scene* updates
             Dot.fillColor=[-1, -1, -1]
@@ -556,8 +559,8 @@ for i, thisBlock in zip(range(nBlock), Blocks):
         for thisComponent in TrialComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        Imgs.addData('Face.started', Face.tStartRefresh)
-        Imgs.addData('Face.stopped', Face.tStopRefresh)
+        Imgs.addData('Object.started', Object.tStartRefresh)
+        Imgs.addData('Object.stopped', Object.tStopRefresh)
         Imgs.addData('Scene.started', Scene.tStartRefresh)
         Imgs.addData('Scene.stopped', Scene.tStopRefresh)
         Imgs.addData('Dot.started', Dot.tStartRefresh)
@@ -577,7 +580,7 @@ for i, thisBlock in zip(range(nBlock), Blocks):
     
     # ------Prepare to start Routine "Rest"-------
     continueRoutine = True
-    routineTimer.add(3.000000)
+    routineTimer.add(rest_time)
     # update component parameters for each repeat
     # keep track of which components have finished
     RestComponents = [rest_dot]
@@ -613,7 +616,7 @@ for i, thisBlock in zip(range(nBlock), Blocks):
             rest_dot.setAutoDraw(True)
         if rest_dot.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > rest_dot.tStartRefresh + 3-frameTolerance:
+            if tThisFlipGlobal > rest_dot.tStartRefresh + rest_time-frameTolerance:
                 # keep track of stop time/frame for later
                 rest_dot.tStop = t  # not accounting for scr refresh
                 rest_dot.frameNStop = frameN  # exact frame index
