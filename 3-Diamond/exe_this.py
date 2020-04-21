@@ -28,9 +28,27 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+# Setting 
+
+date=200420
+direction = +1
+
+Rec_size = 0.23
+RecM_size= 0.09
+Rec_gap  = 0.045
+Rec_color= 'white'
+
+Dia_size = 0.2
+Dia_color= 'white'
+Dia_line_width = 20
+Dia_pos = 0
+Dia_v = 0.0015
+
+
+# Set data
 expInfo = {'participant': '', 'session': '001'}
 expName = '3-dia'  # from the Builder filename that created this script
-expInfo['expName'] = expName
+expInfo['expName'] = date
 expInfo['date'] = 200420  # add a simple timestamp
 psychopyVersion = '2020.1.2'
 expInfo['psychopyVersion'] = psychopyVersion
@@ -47,7 +65,7 @@ if dlg.OK == False:
     core.quit()  # user pressed cancel
 
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-filename = _thisDir + os.sep + '../subjects/%s/data/%s_%s_%s' % (sub, expName, expInfo['participant'], expInfo['date'])
+filename = _thisDir + os.sep + '../subjects/%s/data/%s_%s' % (sub, expName, expInfo['date'])
 
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
@@ -86,19 +104,6 @@ WaitClock = core.Clock()
 # Initialize components for Routine "Trial"
 TrialClock = core.Clock()
 
-# Setting Polygons
-direction = +1
-
-Rec_size = 0.2
-Rec_gap  = 0.05
-Rec_color= [1,1,1]
-
-Dia_size = 0.2
-Dia_color= [1,1,1]
-Dia_line_width = 20
-Dia_pos = 0
-Dia_v = 0.0015
-
 Dia = visual.Rect(
     win=win, name='Dia',
     width=Dia_size, height=Dia_size,
@@ -108,7 +113,7 @@ Dia = visual.Rect(
     opacity=1, depth=0.0, interpolate=True)
 Rec_M = visual.Rect(
     win=win, name='Rec_M',
-    width=0.1, height=1,
+    width=RecM_size, height=1,
     ori=0, pos=(0, 0),
     lineWidth=1, lineColor=Rec_color, lineColorSpace='rgb',
     fillColor=Rec_color, fillColorSpace='rgb',

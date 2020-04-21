@@ -28,42 +28,38 @@ def select_random_number():
 
 def make_matrix_list():
     matrix_list = []
-    print("==BlockID==")
+    #print("==BlockID==")
     blockID = []
     blockID_list = [i+1 for i in range(12)]
     for i in range(12):
         for j in range(12):
             blockID.append(blockID_list[i])
-    print(blockID)
+    #print(blockID)
     matrix_list.append(blockID)
 
-    print("== Trial ==")
+    #print("== Trial ==")
     trial = []
     for i in range(12):
         trial_list = [i+1 for i in range(12)]
         trial.extend(trial_list)
-    print(trial)
+    #print(trial)
     matrix_list.append(trial)
 
-#print("== Category ==")
-# category = [2 for i in range(144)]
-#print(category)
-#matrix_list.append(category)
 
-    print("=======Face  ImageID=======")
+    #print("=======Face  ImageID=======")
     f_imageID = [i+1 for i in range(144)]
     np.random.shuffle(f_imageID)
-    print(f_imageID)    
+    #print(f_imageID)    
     matrix_list.append(f_imageID)
 
 
-    print("=======Scene ImageID=======")
+    #print("=======Scene ImageID=======")
     o_imageID = [i+1 for i in range(144)]
     np.random.shuffle(o_imageID)
-    print(o_imageID)
+    #print(o_imageID)
     matrix_list.append(o_imageID)
 
-    print("=======Target-ness=======")
+    #print("=======Target-ness=======")
     target_list = []
     for i in range(12): target_list.append(select_random_number())
     target_ness = []
@@ -72,17 +68,17 @@ def make_matrix_list():
             if j in target_list[i]: 
                 target_ness.append(1)
             else: target_ness.append(0)
-    print(target_ness)
+    #print(target_ness)
     matrix_list.append(target_ness)
 
-    print("=======Onset time=======")
+    #print("=======Onset time=======")
     onset_time = []
     time = 0
     for i in range(144):
         if i%12 == 0 and i!=0: time = time+18    
         else: time = time+1.5
         onset_time.append(time)
-    print(onset_time)
+    #print(onset_time)
     matrix_list.append(onset_time)  
     
     matrix_list = np.array(matrix_list, float)

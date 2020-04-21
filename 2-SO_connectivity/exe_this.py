@@ -28,6 +28,16 @@ import sys  # to get file system encoding
 import pandas as pd
 
 from psychopy.hardware import keyboard
+
+# Setting
+date=200420
+stim_dir = 'stim'
+nBlock = 12
+nStim = 12
+img_size = 0.3
+opacity=0.6
+rest_time=10
+
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
@@ -58,17 +68,9 @@ o_idx_list = matrix.loc[2]
 s_idx_list = matrix.loc[3]	
 target_list = matrix.loc[4]
 
-# Setting
-stim_dir = 'stim'
-nBlock = 12
-nStim = 12
-img_size = 0.3
-opacity=0.4
-rest_time=10
-
 # Store info about the experiment session
 psychopyVersion = '2020.1.2'
-expName = 'exp_2-%s'%(exp)  # from the Builder filename that created this script
+expName = '2.%s-connect'%(exp)  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '001'}
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
 if dlg.OK == False:
@@ -76,9 +78,8 @@ if dlg.OK == False:
 expInfo['date'] = data.getDateStr()  # add a simple timestamp
 expInfo['expName'] = expName
 expInfo['psychopyVersion'] = psychopyVersion
-
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-filename = '%s/data/%s_%s_%s' % (sub_dir, expName, expInfo['participant'], expInfo['date'])
+filename = '%s/data/%s_%s' % (sub_dir, expName, date)
 
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
