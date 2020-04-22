@@ -71,13 +71,25 @@ def make_matrix_list():
         for j in range(48):
             idx = i*48+j 
             if category[idx] == 1:
-                imageID.append(f_img_idx[j])
+                img=f_img_idx[0]
+                del f_img_idx[0]
+                imageID.append(img)
             elif category[idx] == 2:
-                imageID.append(s_img_idx[j])
+                img=s_img_idx[0]
+                del s_img_idx[0]
+                imageID.append(img)
             elif category[idx] == 3:
-                imageID.append(o_img_idx[j])
-		
-#imageID.extend(img_idx)
+                img=o_img_idx[0]
+                del o_img_idx[0]
+                imageID.append(img)
+
+    # Condition (Do Not Repeat Same Image!)
+    for i in range(48):
+        cond = imageID.count(i+1)
+        if cond!=3:
+            print("Condition did not satisfied")
+            exit()
+
     #print(imageID)    
     matrix_list.append(imageID)
 
@@ -108,15 +120,14 @@ def make_matrix_list():
     return matrix_list				
 
 def main():
-	matrix_list = make_matrix_list()
-	matrix_index = ['blockID','trial','category','imageID','target_ness', 'onset_time']
-	save_dir = sys.argv[1]
-	
-	if len(sys.argv) == 3:
-		save_name = sys.argv[2]
-	else:
-		save_name = '1_matrix.csv'
+    matrix_list = make_matrix_list()
+    matrix_index = ['blockID','trial','category','imageID','target_ness', 'onset_time']
+    save_dir = sys.argv[1]
+    if len(sys.argv) == 3:
+        save_name = sys.argv[2]
+    else:
+	    save_name = '1_matrix.csv'
 
-	make_matrix_file(matrix_list, matrix_index, save_dir, save_name)
+    make_matrix_file(matrix_list, matrix_index, save_dir, save_name)
 if __name__ == '__main__':	
-	main()
+    main()

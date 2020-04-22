@@ -45,19 +45,23 @@ def make_matrix_list():
     #print(trial)
     matrix_list.append(trial)
 
-
-    #print("=======Face  ImageID=======")
-    f_imageID = [i+1 for i in range(144)]
-    np.random.shuffle(f_imageID)
-    #print(f_imageID)    
-    matrix_list.append(f_imageID)
-
-
     #print("=======Scene ImageID=======")
+    s_imageID = [i+1 for i in range(144)]
+    np.random.shuffle(s_imageID)
+    matrix_list.append(s_imageID)
+    
+    #print("=======Object  ImageID=======")
     o_imageID = [i+1 for i in range(144)]
     np.random.shuffle(o_imageID)
-    #print(o_imageID)
     matrix_list.append(o_imageID)
+    
+    # Condition (Do Not Repeat Same Image!)
+    for i in range(48):
+        cond_s = s_imageID.count(i+1)
+        cond_o = o_imageID.count(i+1)
+        if cond_s and cond_o != 1:
+            print("Condition did not satisfied.")
+            exit()
 
     #print("=======Target-ness=======")
     target_list = []
