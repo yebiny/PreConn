@@ -27,6 +27,7 @@ import os  # handy system and path functions
 import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
+import csv
 
 # Setting 
 
@@ -43,6 +44,11 @@ Dia_color= 'white'
 Dia_line_width = 20
 Dia_pos = 0
 Dia_v = 0.0015
+resp_key = ['up', 'down']
+wait_key = ['s']
+
+timer = 432
+
 
 
 # Set data
@@ -65,12 +71,12 @@ if dlg.OK == False:
     core.quit()  # user pressed cancel
 
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-filename = _thisDir + os.sep + '../subjects/%s/data/%s_%s' % (sub, expName, expInfo['date'])
+filename = _thisDir + os.sep + 'data/%s_%s' % (expName, expInfo['date'])
 
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='/Users/nibey/Desktop/WorkSpace/preConn/3-Diamond/untitled_lastrun.py',
+    originPath='/Users/nibey/Desktop/WorkSpace/preConn/3-Dia/untitled_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -101,6 +107,15 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "Wait"
 WaitClock = core.Clock()
+wait_text = visual.TextStim(win=win, name='wait_text',
+    text='WAITNG.. key list: Down, Up.',
+    font='Arial',
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0,
+    color='black', colorSpace='rgb', opacity=1,
+    languageStyle='LTR',
+    depth=0.0);
+wait_resp = keyboard.Keyboard()
+
 # Initialize components for Routine "Trial"
 TrialClock = core.Clock()
 
@@ -142,8 +157,11 @@ routineTimer = core.CountdownTimer()  # to track time remaining of each (non-sli
 # ------Prepare to start Routine "Wait"-------
 continueRoutine = True
 # update component parameters for each repeat
+wait_resp.keys = []
+wait_resp.rt = []
+_wait_resp_allKeys = []
 # keep track of which components have finished
-WaitComponents = []
+WaitComponents = [wait_text, wait_resp]
 for thisComponent in WaitComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -156,7 +174,6 @@ t = 0
 _timeToFirstFrame = win.getFutureFlipTime(clock="now")
 WaitClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
-
 # -------Run Routine "Wait"-------
 while continueRoutine:
     # get current time
@@ -165,11 +182,41 @@ while continueRoutine:
     tThisFlipGlobal = win.getFutureFlipTime(clock=None)
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
-    
-    # check for quit (typically the Esc key)
+
+    # *wait_text* updates
+    if wait_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        wait_text.frameNStart = frameN  # exact frame index
+        wait_text.tStart = t  # local t and not account for scr refresh
+        wait_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(wait_text, 'tStartRefresh')  # time at next scr refresh
+        wait_text.setAutoDraw(True)
+
+    # *wait_resp* updates
+    waitOnFlip = False
+    if wait_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        wait_resp.frameNStart = frameN  # exact frame index
+        wait_resp.tStart = t  # local t and not account for scr refresh
+        wait_resp.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(wait_resp, 'tStartRefresh')  # time at next scr refresh
+        wait_resp.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(wait_resp.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(wait_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if wait_resp.status == STARTED and not waitOnFlip:
+        theseKeys = wait_resp.getKeys(keyList=wait_key, waitRelease=False)
+        _wait_resp_allKeys.extend(theseKeys)
+        if len(_wait_resp_allKeys):
+            wait_resp.keys = _wait_resp_allKeys[-1].name  # just the last key pressed
+            wait_resp.rt = _wait_resp_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+   # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
         core.quit()
-    
+
     # check if all components have finished
     if not continueRoutine:  # a component has requested a forced-end of Routine
         break
@@ -178,7 +225,7 @@ while continueRoutine:
         if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
             continueRoutine = True
             break  # at least one component has not yet finished
-    
+
     # refresh the screen
     if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
         win.flip()
@@ -187,8 +234,20 @@ while continueRoutine:
 for thisComponent in WaitComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
+thisExp.addData('wait_text.started', wait_text.tStartRefresh)
+thisExp.addData('wait_text.stopped', wait_text.tStopRefresh)
+# check responses
+if wait_resp.keys in ['', [], None]:  # No response was made
+    wait_resp.keys = None
+thisExp.addData('wait_resp.keys',wait_resp.keys)
+if wait_resp.keys != None:  # we had a response
+    thisExp.addData('wait_resp.rt', wait_resp.rt)
+thisExp.addData('wait_resp.started', wait_resp.tStartRefresh)
+thisExp.addData('wait_resp.stopped', wait_resp.tStopRefresh)
+thisExp.nextEntry()
 # the Routine "Wait" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
+
 
 # ------Prepare to start Routine "Trial"-------
 continueRoutine = True
@@ -239,7 +298,14 @@ while continueRoutine:
         Dia.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(Dia, 'tStartRefresh')  # time at next scr refresh
         Dia.setAutoDraw(True)
-    
+    if Dia.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Dia.tStartRefresh + timer-frameTolerance:
+            # keep track of stop time/frame for later
+            Dia.tStop = t  # not accounting for scr refresh
+            Dia.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Dia, 'tStopRefresh')  # time at next scr refresh
+            Dia.setAutoDraw(False) 
     # *Rec_M* updates
     if Rec_M.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
@@ -248,7 +314,14 @@ while continueRoutine:
         Rec_M.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(Rec_M, 'tStartRefresh')  # time at next scr refresh
         Rec_M.setAutoDraw(True)
-    
+    if Rec_M.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Rec_M.tStartRefresh + timer-frameTolerance:
+            # keep track of stop time/frame for later
+            Rec_M.tStop = t  # not accounting for scr refresh
+            Rec_M.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Rec_M, 'tStopRefresh')  # time at next scr refresh
+            Rec_M.setAutoDraw(False)    
     # *Rec_R* updates
     if Rec_R.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
@@ -257,6 +330,14 @@ while continueRoutine:
         Rec_R.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(Rec_R, 'tStartRefresh')  # time at next scr refresh
         Rec_R.setAutoDraw(True)
+    if Rec_R.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Rec_R.tStartRefresh + timer-frameTolerance:
+            # keep track of stop time/frame for later
+            Rec_R.tStop = t  # not accounting for scr refresh
+            Rec_R.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Rec_R, 'tStopRefresh')  # time at next scr refresh
+            Rec_R.setAutoDraw(False)    
     
     # *Rec_L* updates
     if Rec_L.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
@@ -266,6 +347,14 @@ while continueRoutine:
         Rec_L.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(Rec_L, 'tStartRefresh')  # time at next scr refresh
         Rec_L.setAutoDraw(True)
+    if Rec_L.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Rec_L.tStartRefresh + timer-frameTolerance:
+            # keep track of stop time/frame for later
+            Rec_L.tStop = t  # not accounting for scr refresh
+            Rec_L.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Rec_L, 'tStopRefresh')  # time at next scr refresh
+            Rec_L.setAutoDraw(False)    
     
     
     # *Resp_sub* updates
@@ -281,15 +370,22 @@ while continueRoutine:
         waitOnFlip = True
         win.callOnFlip(Resp_sub.clock.reset)  # t=0 on next screen flip
         win.callOnFlip(Resp_sub.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if Resp_sub.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Resp_sub.tStartRefresh + timer-frameTolerance:
+            # keep track of stop time/frame for later
+            Resp_sub.tStop = t  # not accounting for scr refresh
+            Resp_sub.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Resp_sub, 'tStopRefresh')  # time at next scr refresh
+            Resp_sub.setAutoDraw(False)    
     if Resp_sub.status == STARTED and not waitOnFlip:
-        theseKeys = Resp_sub.getKeys(keyList=['left', 'right'], waitRelease=False)
+        theseKeys = Resp_sub.getKeys(keyList=resp_key, waitRelease=False)
         _Resp_sub_allKeys.extend(theseKeys)
         if len(_Resp_sub_allKeys):
             Resp_sub.keys = [key.name for key in _Resp_sub_allKeys]  # storing all keys
             Resp_sub.rt = [key.rt for key in _Resp_sub_allKeys]    
             #Resp_sub.keys = _Resp_sub_allKeys[-1].name  # just the last key pressed
             #Resp_sub.rt = _Resp_sub_allKeys[-1].rt
-    
     # *Resp_end* updates
     waitOnFlip = False
     if Resp_end.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
@@ -303,6 +399,14 @@ while continueRoutine:
         waitOnFlip = True
         win.callOnFlip(Resp_end.clock.reset)  # t=0 on next screen flip
         win.callOnFlip(Resp_end.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if Resp_end.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Resp_end.tStartRefresh + timer-frameTolerance:
+            # keep track of stop time/frame for later
+            Resp_end.tStop = t  # not accounting for scr refresh
+            Resp_end.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Resp_end, 'tStopRefresh')  # time at next scr refresh
+            Resp_end.setAutoDraw(False)    
     if Resp_end.status == STARTED and not waitOnFlip:
         theseKeys = Resp_end.getKeys(keyList=['space'], waitRelease=False)
         _Resp_end_allKeys.extend(theseKeys)
@@ -312,8 +416,18 @@ while continueRoutine:
             # a response ends the routine
             continueRoutine = False
     
+
     # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        # !-2 OUTPUT FILE
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        f = open('../subjects/%s/data/3_output.csv'%(sub), 'w', newline='')
+        writer=csv.writer(f)
+        writer.writerow(['Key','Time'])
+        for i in range(len(Resp_sub.keys)):
+            writer.writerow([Resp_sub.keys[i], Resp_sub.rt[i]])
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''''        
         core.quit()
     
     # check if all components have finished
@@ -347,7 +461,6 @@ if Resp_sub.keys in ['', [], None]:  # No response was made
 thisExp.addData('Resp_sub.keys',Resp_sub.keys)
 if Resp_sub.keys != None:  # we had a response
     thisExp.addData('Resp_sub.rt', Resp_sub.rt)
-    print(Resp_sub.keys)
 thisExp.addData('Resp_sub.started', Resp_sub.tStartRefresh)
 thisExp.addData('Resp_sub.stopped', Resp_sub.tStopRefresh)
 thisExp.nextEntry()
