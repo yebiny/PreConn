@@ -65,15 +65,15 @@ nBlocks, nImgs = 12, 12
 img_time = 1
 dot_time = 1
 trial_time = img_time+dot_time
-btw_blocks_time = 4
+btw_blocks_time = 12
 
-wait_key=['space']
 welcome_key=['space']
+wait_key=['s']
 sub_resp_key=['space']
 sig_resp_key=['s']
 
 sub_resp_term = 0.3
-sig_resp_term = 0.1
+sig_resp_term = 0.3
 
 dot_size = 0.007
 img_size = 0.3
@@ -149,9 +149,9 @@ welcome_resp = keyboard.Keyboard()
 # Initialize components for Routine "Wait"
 WaitClock = core.Clock()
 wait_text = visual.TextStim(win=win, name='wait_text',
-    text='Wait..',
+    text='이번 Run은 %s trial 입니다. %s 이미지에 집중하시고 중복되는 이미지가 나오면 버튼을 눌러주세요'%(thisTrial, thisTrial),
     font='Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);

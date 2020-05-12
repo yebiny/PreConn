@@ -53,15 +53,15 @@ stim_categories=['face', 'scene', 'object']
 img_time = 1
 dot_time = 1
 trial_time = img_time+dot_time
-btw_blocks_time = 4
+btw_blocks_time = 12
 
 welcome_key=['space']
 wait_key=['s']
-sub_resp_key=['space']
 sig_resp_key=['s']
+sub_resp_key=['c']
 
 sub_resp_term = 0.3
-sig_resp_term = 0.1
+sig_resp_term = 0.3
 
 dot_size = 0.007
 img_size = 0.3
@@ -413,7 +413,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
 
         # ------Prepare to start Routine "Trial"-------
         continueRoutine = True
-        routineTimer.add(1.600000)
+        routineTimer.add(trial_time+sig_resp_term)
         # update component parameters for each repeat
         sub_resp.keys = []
         sub_resp.rt = []
@@ -590,7 +590,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
     
     # ------Prepare to start Routine "Term"-------
     continueRoutine = True
-    routineTimer.add(12.100000)
+    routineTimer.add(btw_blocks_time+sig_resp_term)
     # update component parameters for each repeat
     rest_resp.keys = []
     rest_resp.rt = []
