@@ -48,6 +48,7 @@ print(matrix)
 # !-2 INFO SETTING
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 nBlocks, nImgs = 12, 12
+stim_dir = './stim/grayScale'
 stim_categories=['face', 'scene', 'object']
 
 img_time = 1
@@ -55,7 +56,6 @@ dot_time = 1
 trial_time = img_time+dot_time
 btw_blocks_time = 12
 
-welcome_key=['space']
 wait_key=['s']
 sig_resp_key=['s']
 sub_resp_key=['c']
@@ -121,17 +121,6 @@ else:
 # create a default keyboard (e.g. to check for escape)
 defaultKeyboard = keyboard.Keyboard()
 
-# Initialize components for Routine "Welcome"
-WelcomeClock = core.Clock()
-welcome_text = visual.TextStim(win=win, name='welcome_text',
-    text='Welcome!\n',
-    font='Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
-    color='white', colorSpace='rgb', opacity=1, 
-    languageStyle='LTR',
-    depth=0.0);
-welcome_resp = keyboard.Keyboard()
-
 # Initialize components for Routine "Wait"
 WaitClock = core.Clock()
 wait_text = visual.TextStim(win=win, name='wait_text',
@@ -170,102 +159,6 @@ rest_resp= keyboard.Keyboard()
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
-
-# ------Prepare to start Routine "Welcome"-------
-continueRoutine = True
-# update component parameters for each repeat
-welcome_resp.keys = []
-welcome_resp.rt = []
-_welcome_resp_allKeys = []
-# keep track of which components have finished
-WelcomeComponents = [welcome_text, welcome_resp]
-for thisComponent in WelcomeComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-WelcomeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "Welcome"-------
-while continueRoutine:
-    # get current time
-    t = WelcomeClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=WelcomeClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # *welcome_text* updates
-    if welcome_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        welcome_text.frameNStart = frameN  # exact frame index
-        welcome_text.tStart = t  # local t and not account for scr refresh
-        welcome_text.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(welcome_text, 'tStartRefresh')  # time at next scr refresh
-        welcome_text.setAutoDraw(True)
-    
-    # *welcome_resp* updates
-    waitOnFlip = False
-    if welcome_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        welcome_resp.frameNStart = frameN  # exact frame index
-        welcome_resp.tStart = t  # local t and not account for scr refresh
-        welcome_resp.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(welcome_resp, 'tStartRefresh')  # time at next scr refresh
-        welcome_resp.status = STARTED
-        # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(welcome_resp.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(welcome_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if welcome_resp.status == STARTED and not waitOnFlip:
-        theseKeys = welcome_resp.getKeys(keyList=welcome_key, waitRelease=False)
-        _welcome_resp_allKeys.extend(theseKeys)
-        if len(_welcome_resp_allKeys):
-            welcome_resp.keys = _welcome_resp_allKeys[-1].name  # just the last key pressed
-            welcome_resp.rt = _welcome_resp_allKeys[-1].rt
-            # a response ends the routine
-            continueRoutine = False
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in WelcomeComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "Welcome"-------
-for thisComponent in WelcomeComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-thisExp.addData('welcome_text.started', welcome_text.tStartRefresh)
-thisExp.addData('welcome_text.stopped', welcome_text.tStopRefresh)
-# check responses
-if welcome_resp.keys in ['', [], None]:  # No response was made
-    welcome_resp.keys = None
-thisExp.addData('welcome_resp.keys',welcome_resp.keys)
-if welcome_resp.keys != None:  # we had a response
-    thisExp.addData('welcome_resp.rt', welcome_resp.rt)
-thisExp.addData('welcome_resp.started', welcome_resp.tStartRefresh)
-thisExp.addData('welcome_resp.stopped', welcome_resp.tStopRefresh)
-thisExp.nextEntry()
-# the Routine "Welcome" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
 
 # ------Prepare to start Routine "Wait"-------
 continueRoutine = True
@@ -408,7 +301,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
         else: img_idx = int(idx_list[idx])
 
         stim_category = stim_categories[int(category_list[idx])-1]
-        this_img = './stim/%s/%i.jpg'%(stim_category, img_idx)
+        this_img = '%s/%s/%i.jpg'%(stim_dir, stim_category, img_idx)
         Image.setImage(this_img)
 
         # ------Prepare to start Routine "Trial"-------
