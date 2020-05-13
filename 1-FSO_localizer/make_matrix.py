@@ -10,31 +10,37 @@ def make_matrix_file(matrix_data, matrix_index, save_dir, save_name):
     print('This file is :', save_as)
     print(pd.read_csv(save_as))
 
-def select_random_number():
+def select_random_number(target_count):
   while True:
-    num_overlap_list = [1,2,2,2,3]
-    overlap_list = random.sample(range(1,11),random.choice(num_overlap_list))
-    if len(overlap_list) == 2:
-      if abs(overlap_list[0]-overlap_list[1]) > 1:
-        return overlap_list
+    num_target = [1,2,2,2,3]
+    #target = random.sample(range(1,11),random.choice(num_target))
+    
+    target = random.sample(range(1,11),target_count)
+    
+    if len(target) == 2:
+      if abs(target[0]-target[1]) > 1:
+        return target
         break
-    elif len(overlap_list) == 3:
-      if abs(overlap_list[0]-overlap_list[1]) > 1 and abs(overlap_list[0]-overlap_list[2]) > 1 and abs(overlap_list[1]-overlap_list[2]) > 1:
-        return overlap_list
+    elif len(target) == 3:
+      if abs(target[0]-target[1]) > 1 and abs(target[0]-target[2]) > 1 and abs(target[1]-target[2]) > 1:
+        return target
         break
     else:
-      return overlap_list
+      return target
       break
 
-def select_random_number2(category_list):
-    a = np.array(category_list)
-    b = np.where(a==1)[0]
-   
-    target_len_ina_stim = []
-    for i in range(4):
-        target_len_ina_stim.append(random.sample(range(1,4),1)[0])
-    #object_target = [random.sample(range(1,11),1) for i in range(4) ]
-    print(target_len_ina_stim, sum(target_len_ina_stim))
+def make_target_count():   
+    target_count = [1,1,1,1]
+    add_1 = random.sample([0,1,2,3], 2 )
+    add_2 = random.sample([0,1,2,3], 2 )
+    
+    target_count[add_1[0]] += 1 
+    target_count[add_1[1]] += 1 
+    
+    target_count[add_2[0]] += 1 
+    target_count[add_2[1]] += 1
+
+    return target_count
 
 def make_matrix_list():
     matrix_list = []
@@ -105,11 +111,30 @@ def make_matrix_list():
 
     #print("=======Target-ness=======")
     target_ness = []
-    target_list = [] 
-    for i in range(12): target_list.append(select_random_number())
-        
-    select_random_number2(category_list)
+    target_list = [[] for i in range(12)] 
     
+    f_target_count = make_target_count()
+    f_block_idx = np.where(np.array(category_list)==1)[0]
+    for i in range(4): 
+        target = select_random_number(f_target_count[i])
+        target_list[f_block_idx[i]] = target
+
+    s_target_count = make_target_count()
+    s_block_idx = np.where(np.array(category_list)==2)[0]
+    for i in range(4): 
+        target = select_random_number(s_target_count[i])
+        target_list[s_block_idx[i]] = target
+    
+    o_target_count = make_target_count()
+    o_block_idx = np.where(np.array(category_list)==3)[0]
+    for i in range(4): 
+        target = select_random_number(o_target_count[i])
+        target_list[o_block_idx[i]] = target
+    
+    print(f_target_count, s_target_count, o_target_count)
+    print(f_block_idx, s_block_idx, o_block_idx) 
+    print(target_list) 
+   
     for i in range(12):
         for j in range(len(target_list)):
             if j in target_list[i]:

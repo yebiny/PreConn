@@ -10,10 +10,9 @@ def make_matrix_file(matrix_data, matrix_index, save_dir, save_name):
     print('This file is :', save_as)
     print(pd.read_csv(save_as))
 
-def select_random_number():
+def select_random_number(target_count):
   while True:
-    num_overlap_list = [1,2,2,2,3,3]
-    overlap_list = random.sample(range(1,11),random.choice(num_overlap_list))
+    overlap_list = random.sample(range(1,11),target_count)
     if len(overlap_list) == 2:
       if abs(overlap_list[0]-overlap_list[1]) > 1:
         return overlap_list
@@ -64,15 +63,27 @@ def make_matrix_list():
             exit()
 
     #print("=======Target-ness=======")
+
+    target_count = [1 for i in range(12)]
+    add_1 = random.sample([i for i in range(12)], 6)
+    add_2 = random.sample([i for i in range(12)], 6)
+    for i in range(6):
+        target_count[add_1[i]] += 1
+        target_count[add_2[i]] += 1
+    print(target_count, sum(target_count))
+
     target_list = []
-    for i in range(12): target_list.append(select_random_number())
+    for i in range(12): 
+        target_list.append(select_random_number(target_count[i]))
+    
+    print(target_list)
     target_ness = []
     for i in range(12):
         for j in range(len(target_list)):
             if j in target_list[i]: 
                 target_ness.append(1)
             else: target_ness.append(0)
-    #print(target_ness)
+    print(target_ness)
     matrix_list.append(target_ness)
 
     #print("=======Onset time=======")
