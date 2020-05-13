@@ -62,10 +62,10 @@ print( "* This Trial is [ %s ]"%thisTrial)
 stim_dir = 'stim/grayScale/'
 nBlocks, nImgs = 12, 12
 
-img_time = 1
-dot_time = 1
+img_time = 0.5
+dot_time = 0.5
 trial_time = img_time+dot_time
-btw_blocks_time = 12
+btw_blocks_time = 2
 
 wait_key=['s']
 sub_resp_key=['c']
@@ -137,7 +137,7 @@ defaultKeyboard = keyboard.Keyboard()
 # Initialize components for Routine "Wait"
 WaitClock = core.Clock()
 wait_text = visual.TextStim(win=win, name='wait_text',
-    text= ' Focus on %s please.', 
+    text= ' Focus on %s please.'%(thisTrial), 
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 

@@ -35,7 +35,7 @@ date=200420
 direction = +1
 
 Rec_size = 0.23
-RecM_size= 0.09
+RecM_size= 0.07
 Rec_gap  = 0.045
 Rec_color= 'white'
 
@@ -44,7 +44,7 @@ Dia_color= 'white'
 Dia_line_width = 20
 Dia_pos = 0
 Dia_v = 0.0015
-resp_key = ['up', 'down']
+resp_key = ['c', 'd']
 wait_key = ['s']
 
 timer = 432
@@ -383,8 +383,7 @@ while continueRoutine:
         _Resp_sub_allKeys.extend(theseKeys)
         if len(_Resp_sub_allKeys):
             Resp_sub.keys = [key.name for key in _Resp_sub_allKeys]  # storing all keys
-            Resp_sub.rt = [key.rt for key in _Resp_sub_allKeys]
-
+            Resp_sub.rt = [key.rt for key in _Resp_sub_allKeys]    
             #Resp_sub.keys = _Resp_sub_allKeys[-1].name  # just the last key pressed
             #Resp_sub.rt = _Resp_sub_allKeys[-1].rt
     # *Resp_end* updates
