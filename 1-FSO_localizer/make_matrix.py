@@ -12,7 +12,7 @@ def make_matrix_file(matrix_data, matrix_index, save_dir, save_name):
 
 def select_random_number():
   while True:
-    num_overlap_list = [1,2,2,2,3,3]
+    num_overlap_list = [1,2,2,2,3]
     overlap_list = random.sample(range(1,11),random.choice(num_overlap_list))
     if len(overlap_list) == 2:
       if abs(overlap_list[0]-overlap_list[1]) > 1:
@@ -25,6 +25,16 @@ def select_random_number():
     else:
       return overlap_list
       break
+
+def select_random_number2(category_list):
+    a = np.array(category_list)
+    b = np.where(a==1)[0]
+   
+    target_len_ina_stim = []
+    for i in range(4):
+        target_len_ina_stim.append(random.sample(range(1,4),1)[0])
+    #object_target = [random.sample(range(1,11),1) for i in range(4) ]
+    print(target_len_ina_stim, sum(target_len_ina_stim))
 
 def make_matrix_list():
     matrix_list = []
@@ -95,9 +105,11 @@ def make_matrix_list():
 
     #print("=======Target-ness=======")
     target_ness = []
-    target_list = []
+    target_list = [] 
     for i in range(12): target_list.append(select_random_number())
-    target_ness = []
+        
+    select_random_number2(category_list)
+    
     for i in range(12):
         for j in range(len(target_list)):
             if j in target_list[i]:
