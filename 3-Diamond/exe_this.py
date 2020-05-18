@@ -41,7 +41,7 @@ Rec_color= 'white'
 
 Dia_size = 0.2
 Dia_color= 'white'
-Dia_line_width = 25
+Dia_line_width = 22
 Dia_pos = 0
 Dia_v = 0.0015
 resp_key = ['c', 'd']
@@ -144,6 +144,13 @@ Rec_L = visual.Rect(
     win=win, name='Rec_L',
     width=Rec_size, height=1,
     ori=0, pos=(-0.05-0.5*Rec_size-Rec_gap, 0),
+    lineWidth=1, lineColor=Rec_color, lineColorSpace='rgb',
+    fillColor=Rec_color, fillColorSpace='rgb',
+    opacity=1, depth=-2.0, interpolate=True)
+Rec_D = visual.Rect(
+    win=win, name='Rec_D',
+    width=1, height=0.3,
+    ori=0, pos=(0, -0.292),
     lineWidth=1, lineColor=Rec_color, lineColorSpace='rgb',
     fillColor=Rec_color, fillColorSpace='rgb',
     opacity=1, depth=-2.0, interpolate=True)
@@ -259,7 +266,7 @@ Resp_end.keys = []
 Resp_end.rt = []
 _Resp_end_allKeys = []
 # keep track of which components have finished
-TrialComponents = [Dia,Rec_M, Rec_R, Rec_L,  Resp_sub, Resp_end]
+TrialComponents = [Dia,Rec_M, Rec_R, Rec_L, Rec_D, Resp_sub, Resp_end]
 for thisComponent in TrialComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -355,7 +362,22 @@ while continueRoutine:
             Rec_L.frameNStop = frameN  # exact frame index
             win.timeOnFlip(Rec_L, 'tStopRefresh')  # time at next scr refresh
             Rec_L.setAutoDraw(False)    
-    
+    # *Rec_D* updates
+    if Rec_D.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        Rec_D.frameNStart = frameN  # exact frame index
+        Rec_D.tStart = t  # local t and not account for scr refresh
+        Rec_D.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(Rec_D, 'tStartRefresh')  # time at next scr refresh
+        Rec_D.setAutoDraw(True)
+    if Rec_D.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Rec_D.tStartRefresh + timer-frameTolerance:
+            # keep track of stop time/frame for later
+            Rec_D.tStop = t  # not accounting for scr refresh
+            Rec_D.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Rec_D, 'tStopRefresh')  # time at next scr refresh
+            Rec_D.setAutoDraw(False)    
     
     # *Resp_sub* updates
     waitOnFlip = False
@@ -456,6 +478,8 @@ thisExp.addData('Rec_R.started', Rec_R.tStartRefresh)
 thisExp.addData('Rec_R.stopped', Rec_R.tStopRefresh)
 thisExp.addData('Rec_L.started', Rec_L.tStartRefresh)
 thisExp.addData('Rec_L.stopped', Rec_L.tStopRefresh)
+thisExp.addData('Rec_D.started', Rec_D.tStartRefresh)
+thisExp.addData('Rec_D.stopped', Rec_D.tStopRefresh)
 # check responses
 if Resp_sub.keys in ['', [], None]:  # No response was made
     Resp_sub.keys = None
