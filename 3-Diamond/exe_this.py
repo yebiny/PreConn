@@ -35,13 +35,13 @@ date=200420
 direction = +1
 
 Rec_size = 0.23
-RecM_size= 0.07
+RecM_size= 0.085
 Rec_gap  = 0.045
 Rec_color= 'white'
 
 Dia_size = 0.2
 Dia_color= 'white'
-Dia_line_width = 22
+Dia_line_width = 28
 Dia_pos = 0
 Dia_v = 0.0015
 resp_key = ['c', 'd']
