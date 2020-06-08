@@ -31,17 +31,16 @@ import csv
 
 # Setting 
 
-date=200420
 direction = +1
 
 Rec_size = 0.23
-RecM_size= 0.07
+RecM_size= 0.085
 Rec_gap  = 0.045
 Rec_color= 'white'
 
 Dia_size = 0.2
 Dia_color= 'white'
-Dia_line_width = 20
+Dia_line_width = 28
 Dia_pos = 0
 Dia_v = 0.0015
 resp_key = ['c', 'd']
@@ -49,39 +48,18 @@ wait_key = ['s']
 
 timer = 432
 
-
-
-# Set data
-expInfo = {'participant': '', 'session': '001'}
-expName = '3-dia'  # from the Builder filename that created this script
-expInfo['expName'] = date
-expInfo['date'] = 200420  # add a simple timestamp
-psychopyVersion = '2020.1.2'
-expInfo['psychopyVersion'] = psychopyVersion
-
-sub = sys.argv[1]
-
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
-# Store info about the experiment session
-dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
-if dlg.OK == False:
-    core.quit()  # user pressed cancel
-
-# Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-filename = _thisDir + os.sep + 'data/%s_%s' % (expName, expInfo['date'])
 
 # An ExperimentHandler isn't essential but helps with data saving
-thisExp = data.ExperimentHandler(name=expName, version='',
-    extraInfo=expInfo, runtimeInfo=None,
+thisExp = data.ExperimentHandler(name='train', version='',
+    extraInfo=None, runtimeInfo=None,
     originPath='/Users/nibey/Desktop/WorkSpace/preConn/3-Dia/untitled_lastrun.py',
     savePickle=True, saveWideText=True,
-    dataFileName=filename)
+    dataFileName=None)
 # save a log file for detail verbose info
-logFile = logging.LogFile(filename+'.log', level=logging.EXP)
-logging.console.setLevel(logging.WARNING)  # this outputs to the screen, not a file
 
 endExpNow = False  # flag for 'escape' or other condition => quit the exp
 frameTolerance = 0.001  # how close to onset before 'same' frame
@@ -95,12 +73,6 @@ win = visual.Window(
     monitor='testMonitor', color=[1,1,1], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
     units='height')
-# store frame rate of monitor if we can measure it
-expInfo['frameRate'] = win.getActualFrameRate()
-if expInfo['frameRate'] != None:
-    frameDur = 1.0 / round(expInfo['frameRate'])
-else:
-    frameDur = 1.0 / 60.0  # could not measure, so guess
 
 # create a default keyboard (e.g. to check for escape)
 defaultKeyboard = keyboard.Keyboard()
@@ -108,9 +80,9 @@ defaultKeyboard = keyboard.Keyboard()
 # Initialize components for Routine "Wait"
 WaitClock = core.Clock()
 wait_text = visual.TextStim(win=win, name='wait_text',
-    text='WAITNG.. key list: Down, Up.',
-    font='Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0,
+    text='곧 실험이 시작됩니다. \n 선으로 보이면 엄지, 도형으로 보이면 검지에 있는 버튼을 눌러주세요.',
+    font='AppleMyungjo',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0,
     color='black', colorSpace='rgb', opacity=1,
     languageStyle='LTR',
     depth=0.0);
@@ -132,7 +104,7 @@ Rec_M = visual.Rect(
     ori=0, pos=(0, 0),
     lineWidth=1, lineColor=Rec_color, lineColorSpace='rgb',
     fillColor=Rec_color, fillColorSpace='rgb',
-    opacity=1, depth=-1.0, interpolate=True)
+    opacity=0.9, depth=-1.0, interpolate=True)
 Rec_R = visual.Rect(
     win=win, name='Rec_R',
     width=Rec_size, height=1,
@@ -147,8 +119,15 @@ Rec_L = visual.Rect(
     lineWidth=1, lineColor=Rec_color, lineColorSpace='rgb',
     fillColor=Rec_color, fillColorSpace='rgb',
     opacity=1, depth=-2.0, interpolate=True)
-Resp_sub = keyboard.Keyboard()
-Resp_end = keyboard.Keyboard()
+Rec_D = visual.Rect(
+    win=win, name='Rec_D',
+    width=1, height=0.3,
+    ori=0, pos=(0, -0.292),
+    lineWidth=1, lineColor=Rec_color, lineColorSpace='rgb',
+    fillColor=Rec_color, fillColorSpace='rgb',
+    opacity=1, depth=-2.0, interpolate=True)
+Opac_more = keyboard.Keyboard()
+Opac_less = keyboard.Keyboard()
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -208,6 +187,8 @@ while continueRoutine:
     if wait_resp.status == STARTED and not waitOnFlip:
         theseKeys = wait_resp.getKeys(keyList=wait_key, waitRelease=False)
         _wait_resp_allKeys.extend(theseKeys)
+        if len(theseKeys)!=0:
+            Rec_M.opacity+=-0.02
         if len(_wait_resp_allKeys):
             wait_resp.keys = _wait_resp_allKeys[-1].name  # just the last key pressed
             wait_resp.rt = _wait_resp_allKeys[-1].rt
@@ -252,14 +233,14 @@ routineTimer.reset()
 # ------Prepare to start Routine "Trial"-------
 continueRoutine = True
 # update component parameters for each repeat
-Resp_sub.keys = []
-Resp_sub.rt = []
-_Resp_sub_allKeys = []
-Resp_end.keys = []
-Resp_end.rt = []
-_Resp_end_allKeys = []
+Opac_more.keys = []
+Opac_more.rt = []
+_Opac_more_allKeys = []
+Opac_less.keys = []
+Opac_less.rt = []
+_Opac_less_allKeys = []
 # keep track of which components have finished
-TrialComponents = [Dia,Rec_M, Rec_R, Rec_L,  Resp_sub, Resp_end]
+TrialComponents = [Dia,Rec_M, Rec_R, Rec_L, Rec_D, Opac_more, Opac_less]
 for thisComponent in TrialComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -290,7 +271,7 @@ while continueRoutine:
         direction = +1
    
     Dia_pos = Dia_pos + direction*Dia_v
-    Dia.pos = (Dia_pos,0)      
+    Dia.pos = (Dia_pos,0)
     if Dia.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
         Dia.frameNStart = frameN  # exact frame index
@@ -355,79 +336,91 @@ while continueRoutine:
             Rec_L.frameNStop = frameN  # exact frame index
             win.timeOnFlip(Rec_L, 'tStopRefresh')  # time at next scr refresh
             Rec_L.setAutoDraw(False)    
-    
-    
-    # *Resp_sub* updates
-    waitOnFlip = False
-    if Resp_sub.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    # *Rec_D* updates
+    if Rec_D.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
-        Resp_sub.frameNStart = frameN  # exact frame index
-        Resp_sub.tStart = t  # local t and not account for scr refresh
-        Resp_sub.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(Resp_sub, 'tStartRefresh')  # time at next scr refresh
-        Resp_sub.status = STARTED
+        Rec_D.frameNStart = frameN  # exact frame index
+        Rec_D.tStart = t  # local t and not account for scr refresh
+        Rec_D.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(Rec_D, 'tStartRefresh')  # time at next scr refresh
+        Rec_D.setAutoDraw(True)
+    if Rec_D.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Rec_D.tStartRefresh + timer-frameTolerance:
+            # keep track of stop time/frame for later
+            Rec_D.tStop = t  # not accounting for scr refresh
+            Rec_D.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Rec_D, 'tStopRefresh')  # time at next scr refresh
+            Rec_D.setAutoDraw(False)    
+    
+    # *Opac_more* updates
+    waitOnFlip = False
+    if Opac_more.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        Opac_more.frameNStart = frameN  # exact frame index
+        Opac_more.tStart = t  # local t and not account for scr refresh
+        Opac_more.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(Opac_more, 'tStartRefresh')  # time at next scr refresh
+        Opac_more.status = STARTED
         # keyboard checking is just starting
         waitOnFlip = True
-        win.callOnFlip(Resp_sub.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(Resp_sub.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if Resp_sub.status == STARTED:
+        win.callOnFlip(Opac_more.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(Opac_more.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if Opac_more.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > Resp_sub.tStartRefresh + timer-frameTolerance:
+        if tThisFlipGlobal > Opac_more.tStartRefresh + timer-frameTolerance:
             # keep track of stop time/frame for later
-            Resp_sub.tStop = t  # not accounting for scr refresh
-            Resp_sub.frameNStop = frameN  # exact frame index
-            win.timeOnFlip(Resp_sub, 'tStopRefresh')  # time at next scr refresh
-            Resp_sub.setAutoDraw(False)    
-    if Resp_sub.status == STARTED and not waitOnFlip:
-        theseKeys = Resp_sub.getKeys(keyList=resp_key, waitRelease=False)
-        _Resp_sub_allKeys.extend(theseKeys)
-        if len(_Resp_sub_allKeys):
-            Resp_sub.keys = [key.name for key in _Resp_sub_allKeys]  # storing all keys
-            Resp_sub.rt = [key.rt for key in _Resp_sub_allKeys]    
-            #Resp_sub.keys = _Resp_sub_allKeys[-1].name  # just the last key pressed
-            #Resp_sub.rt = _Resp_sub_allKeys[-1].rt
-    # *Resp_end* updates
+            Opac_more.tStop = t  # not accounting for scr refresh
+            Opac_more.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Opac_more, 'tStopRefresh')  # time at next scr refresh
+            Opac_more.setAutoDraw(False)    
+    if Opac_more.status == STARTED and not waitOnFlip:
+        theseKeys = Opac_more.getKeys(keyList=['right'], waitRelease=False)
+        _Opac_more_allKeys.extend(theseKeys)
+        
+        if len(theseKeys)!=0:
+            Rec_M.opacity+=0.02
+        if len(_Opac_more_allKeys):
+            Opac_more.keys = [key.name for key in _Opac_more_allKeys]  # storing all keys
+            Opac_more.rt = [key.rt for key in _Opac_more_allKeys]
+
+            #Opac_more.keys = _Opac_more_allKeys[-1].name  # just the last key pressed
+            #Opac_more.rt = _Opac_more_allKeys[-1].rt
+    # *Opac_less* updates
     waitOnFlip = False
-    if Resp_end.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    if Opac_less.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
-        Resp_end.frameNStart = frameN  # exact frame index
-        Resp_end.tStart = t  # local t and not account for scr refresh
-        Resp_end.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(Resp_end, 'tStartRefresh')  # time at next scr refresh
-        Resp_end.status = STARTED
+        Opac_less.frameNStart = frameN  # exact frame index
+        Opac_less.tStart = t  # local t and not account for scr refresh
+        Opac_less.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(Opac_less, 'tStartRefresh')  # time at next scr refresh
+        Opac_less.status = STARTED
         # keyboard checking is just starting
         waitOnFlip = True
-        win.callOnFlip(Resp_end.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(Resp_end.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if Resp_end.status == STARTED:
+        win.callOnFlip(Opac_less.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(Opac_less.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if Opac_less.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > Resp_end.tStartRefresh + timer-frameTolerance:
+        if tThisFlipGlobal > Opac_less.tStartRefresh + timer-frameTolerance:
             # keep track of stop time/frame for later
-            Resp_end.tStop = t  # not accounting for scr refresh
-            Resp_end.frameNStop = frameN  # exact frame index
-            win.timeOnFlip(Resp_end, 'tStopRefresh')  # time at next scr refresh
-            Resp_end.setAutoDraw(False)    
-    if Resp_end.status == STARTED and not waitOnFlip:
-        theseKeys = Resp_end.getKeys(keyList=['space'], waitRelease=False)
-        _Resp_end_allKeys.extend(theseKeys)
-        if len(_Resp_end_allKeys):
-            Resp_end.keys = _Resp_end_allKeys[-1].name  # just the last key pressed
-            Resp_end.rt = _Resp_end_allKeys[-1].rt
+            Opac_less.tStop = t  # not accounting for scr refresh
+            Opac_less.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Opac_less, 'tStopRefresh')  # time at next scr refresh
+            Opac_less.setAutoDraw(False)    
+    if Opac_less.status == STARTED and not waitOnFlip:
+        theseKeys = Opac_less.getKeys(keyList=['left'], waitRelease=False)
+        _Opac_less_allKeys.extend(theseKeys)
+        if len(theseKeys)!=0:
+            Rec_M.opacity+=-0.1
+        if len(_Opac_less_allKeys):
+            Opac_less.keys = _Opac_less_allKeys[-1].name  # just the last key pressed
+            Opac_less.rt = _Opac_less_allKeys[-1].rt
             # a response ends the routine
-            continueRoutine = False
+#continueRoutine = False
     
 
     # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''
-        # !-2 OUTPUT FILE
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''
-        f = open('../subjects/%s/data/3_output.csv'%(sub), 'w', newline='')
-        writer=csv.writer(f)
-        writer.writerow(['Key','Time'])
-        for i in range(len(Resp_sub.keys)):
-            writer.writerow([Resp_sub.keys[i], Resp_sub.rt[i]])
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''        
         core.quit()
     
     # check if all components have finished
@@ -455,23 +448,25 @@ thisExp.addData('Rec_R.started', Rec_R.tStartRefresh)
 thisExp.addData('Rec_R.stopped', Rec_R.tStopRefresh)
 thisExp.addData('Rec_L.started', Rec_L.tStartRefresh)
 thisExp.addData('Rec_L.stopped', Rec_L.tStopRefresh)
+thisExp.addData('Rec_D.started', Rec_D.tStartRefresh)
+thisExp.addData('Rec_D.stopped', Rec_D.tStopRefresh)
 # check responses
-if Resp_sub.keys in ['', [], None]:  # No response was made
-    Resp_sub.keys = None
-thisExp.addData('Resp_sub.keys',Resp_sub.keys)
-if Resp_sub.keys != None:  # we had a response
-    thisExp.addData('Resp_sub.rt', Resp_sub.rt)
-thisExp.addData('Resp_sub.started', Resp_sub.tStartRefresh)
-thisExp.addData('Resp_sub.stopped', Resp_sub.tStopRefresh)
+if Opac_more.keys in ['', [], None]:  # No response was made
+    Opac_more.keys = None
+thisExp.addData('Opac_more.keys',Opac_more.keys)
+if Opac_more.keys != None:  # we had a response
+    thisExp.addData('Opac_more.rt', Opac_more.rt)
+thisExp.addData('Opac_more.started', Opac_more.tStartRefresh)
+thisExp.addData('Opac_more.stopped', Opac_more.tStopRefresh)
 thisExp.nextEntry()
 # check responses
-if Resp_end.keys in ['', [], None]:  # No response was made
-    Resp_end.keys = None
-thisExp.addData('Resp_end.keys',Resp_end.keys)
-if Resp_end.keys != None:  # we had a response
-    thisExp.addData('Resp_end.rt', Resp_end.rt)
-thisExp.addData('Resp_end.started', Resp_end.tStartRefresh)
-thisExp.addData('Resp_end.stopped', Resp_end.tStopRefresh)
+if Opac_less.keys in ['', [], None]:  # No response was made
+    Opac_less.keys = None
+thisExp.addData('Opac_less.keys',Opac_less.keys)
+if Opac_less.keys != None:  # we had a response
+    thisExp.addData('Opac_less.rt', Opac_less.rt)
+thisExp.addData('Opac_less.started', Opac_less.tStartRefresh)
+thisExp.addData('Opac_less.stopped', Opac_less.tStopRefresh)
 thisExp.nextEntry()
 # the Routine "Trial" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
@@ -480,9 +475,6 @@ routineTimer.reset()
 # and win.timeOnFlip() tasks get executed before quitting
 win.flip()
 
-# these shouldn't be strictly necessary (should auto-save)
-thisExp.saveAsWideText(filename+'.csv')
-thisExp.saveAsPickle(filename)
 logging.flush()
 # make sure everything is closed down
 thisExp.abort()  # or data files will save again on exit
