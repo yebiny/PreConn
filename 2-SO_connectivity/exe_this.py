@@ -85,7 +85,7 @@ o_opac = 0.3
 import csv
 f = open('%s/data/2-%s_output.csv'%(sub_dir, exp), 'w', newline='')
 writer=csv.writer(f)
-writer.writerow(['Block', 'StimNum', 'OImg', 'SceneImg', 'Target', 'ImgStart', 'ImgEnd', 'SubResp', 'SigResp1', 'SigResp2'])
+writer.writerow(['Block', 'StimNum', 'OImg', 'SceneImg', 'Target', 'TrialStart','ImgStart', 'ImgEnd', 'SubResp', 'SigResp1', 'SigResp2'])
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 # Store info about the experiment session
@@ -532,12 +532,14 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
         Imgs.addData('sig_resp.started', sig_resp.tStartRefresh)
         Imgs.addData('sig_resp.stopped', sig_resp.tStopRefresh)
         thisExp.nextEntry()
+        
+        # !-
+        if type(sig_resp.rt) == float:
+            sig_resp_time = trial_time-sig_resp_term+sig_resp.rt
+        else: sig_resp_time = trial_time+sig_resp_term
+        
         img_start, img_end = Object.tStartRefresh, Object.tStopRefresh
-		if sig_resp.rt ==None:
-			sig_resp_time = 0
-		else: sig_resp_time = sig_resp.rt
-#dataInfo = [i, j, o_img, s_img, target_list[idx], Object.tStartRefresh, Object.tStopRefresh, sub_resp.rt, sig_resp.rt,  sig_resp_2.rt]
-        dataInfo = [i, j, o_img, s_img, target_list[idx], img_start, img_end, 0, img_end-img_start,  sub_resp.rt, sig_resp_time,  sig_resp_2.rt]
+        dataInfo = [i, j, o_img, s_img, target_list[idx], img_start, 0, img_end-img_start,  sub_resp.rt, sig_resp_time,  []]
         writer.writerow(dataInfo)
         
     # completed 1 repeats of 'Imgs'
@@ -653,7 +655,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
     Blocks.addData('sig_resp_2.started', sig_resp_2.tStartRefresh)
     Blocks.addData('sig_resp_2.stopped', sig_resp_2.tStopRefresh)
 
-    dataInfo = [[],[],[],[],[],Object.tStartRefresh, Object.tStopRefresh, sub_resp.rt, sig_resp.rt, sig_resp_2.rt]
+    dataInfo = [[],[],[],[],[], Dot.tStartRefresh, 0, Dot.tStopRefresh, [], [], sig_resp_2.rt]
     writer.writerow(dataInfo)
 
     thisExp.nextEntry()

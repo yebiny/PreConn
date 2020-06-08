@@ -74,7 +74,7 @@ opacity = 0.3
 import csv
 f = open('%s/data/%s_output.csv'%(sub_dir,exp), 'w', newline='')
 writer=csv.writer(f)
-writer.writerow(['Block', 'StimNum', 'Img', 'Target', 'Trial Start', 'Trial End', 'SubResp', 'SigResp1', 'SigResp2'])
+writer.writerow(['Block', 'StimNum', 'Img', 'Target', 'Trail Start', 'Image Start', 'Image End', 'SubResp', 'SigResp1', 'SigResp2'])
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 # !-4  Store info about the experiment session
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -104,10 +104,10 @@ else:
 	expInfo = {
 			'Date': date,
 			'Participant': sub, 
-			'Gender': '', 
-			'Age':'',
-			'Hand':'',
 	}
+	dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=sub)
+	if dlg.OK == False:
+	    core.quit()  # user pressed cancel
 
 	log_f = open(log_csv, 'a', newline='')
 	log_r = csv.reader(open(log_csv,"r+"))
@@ -508,7 +508,13 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
         thisExp.nextEntry()
         
         # !-
-        dataInfo = [i, j, this_img, target_list[idx], Image.tStartRefresh, Image.tStopRefresh, sub_resp.rt, sig_resp.rt, []]
+        if type(sig_resp.rt) == float:
+            sig_resp_time = trial_time-sig_resp_term+sig_resp.rt
+        else: sig_resp_time = trial_time+sig_resp_term
+        img_start = Image.tStartRefresh
+        img_end = Image.tStopRefresh
+        
+        dataInfo = [i, j, this_img, target_list[idx], img_start, 0, img_end-img_start,  sub_resp.rt, sig_resp_time, []]
         writer.writerow(dataInfo)
     # completed 5 repeats of 'Imgs'
     
@@ -625,7 +631,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
     thisExp.nextEntry()
     
     # !-
-    dataInfo = ['TERM', [], [], [], Dot.tStartRefresh, Dot.tStopRefresh, [], [], rest_resp.rt]
+    dataInfo = [[], [], [], [], Dot.tStartRefresh, 0, Dot.tStopRefresh, [], [], rest_resp.rt]
     writer.writerow(dataInfo)
 # completed 1 repeats of 'Blocks'
 
