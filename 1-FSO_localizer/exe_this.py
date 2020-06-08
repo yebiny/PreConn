@@ -37,8 +37,10 @@ os.chdir(_thisDir)
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 import pandas as pd
 sub = sys.argv[1]
+exp = sys.argv[2]
 sub_dir = '../subjects/%s'%sub
-matrix_path = '%s/matrix/1_matrix.csv'%(sub_dir)
+matrix_file = '1-%s_matrix.csv'%(exp)
+matrix_path = '%s/matrix/%s'%(sub_dir, matrix_file)
 matrix = pd.read_csv(matrix_path)
 category_list = matrix.loc[2]
 idx_list = matrix.loc[3]
@@ -70,7 +72,7 @@ opacity = 0.3
 # !-3 OUTPUT FILE
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 import csv
-f = open('%s/data/1_output.csv'%(sub_dir), 'w', newline='')
+f = open('%s/data/1-%s_output.csv'%(sub_dir,exp), 'w', newline='')
 writer=csv.writer(f)
 writer.writerow(['Block', 'StimNum', 'Img', 'Target', 'Trial Start', 'Trial End', 'SubResp', 'SigResp1', 'SigResp2'])
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -124,9 +126,9 @@ defaultKeyboard = keyboard.Keyboard()
 # Initialize components for Routine "Wait"
 WaitClock = core.Clock()
 wait_text = visual.TextStim(win=win, name='wait_text',
-    text='Waiting\n',
-    font='Arial',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
+    text='곧 실험이 시작됩니다.\n 이미지가 반복되면 버튼을 눌러주세요',
+    font='AppleMyungjo',
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);

@@ -135,10 +135,14 @@ else:
 defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "Wait"
+
+if thisTrial == 'Object':
+	thisText = '물체'
+else: thisText = '배경'
 WaitClock = core.Clock()
 wait_text = visual.TextStim(win=win, name='wait_text',
-    text= ' Focus on %s please.'%(thisTrial), 
-    font='Arial',
+    text= '이번 시행에서는 %s 이미지에 집중해 주시고 %s 이미지가 반복되면 버튼을 눌러주세요.'%(thisText, thisText), 
+    font='AppleMyungjo',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',

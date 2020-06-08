@@ -160,10 +160,8 @@ def main():
     matrix_list = make_matrix_list()
     matrix_index = ['blockID','trial','category','imageID','target_ness', 'onset_time']
     save_dir = sys.argv[1]
-    if len(sys.argv) == 3:
-        save_name = sys.argv[2]
-    else:
-	    save_name = '1_matrix.csv'
+    save_name = sys.argv[2]
+    save_name = '1-%s_matrix.csv'%save_name
 
     make_matrix_file(matrix_list, matrix_index, save_dir, save_name)
 if __name__ == '__main__':	
