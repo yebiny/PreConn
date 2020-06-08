@@ -37,9 +37,9 @@ os.chdir(_thisDir)
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 import pandas as pd
 sub = sys.argv[1]
-exp = sys.argv[2]
+exp = '1-%s'%(sys.argv[2])
 sub_dir = '../subjects/%s'%sub
-matrix_file = '1-%s_matrix.csv'%(exp)
+matrix_file = '%s_matrix.csv'%(exp)
 matrix_path = '%s/matrix/%s'%(sub_dir, matrix_file)
 matrix = pd.read_csv(matrix_path)
 category_list = matrix.loc[2]
@@ -72,27 +72,57 @@ opacity = 0.3
 # !-3 OUTPUT FILE
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 import csv
-f = open('%s/data/1-%s_output.csv'%(sub_dir,exp), 'w', newline='')
+f = open('%s/data/%s_output.csv'%(sub_dir,exp), 'w', newline='')
 writer=csv.writer(f)
 writer.writerow(['Block', 'StimNum', 'Img', 'Target', 'Trial Start', 'Trial End', 'SubResp', 'SigResp1', 'SigResp2'])
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-# Store info about the experiment session
+# !-4  Store info about the experiment session
+''''''''''''''''''''''''''''''''''''''''''''''''''''''
 psychopyVersion = '2020.1.2'
-expName = 'test'  # from the Builder filename that created this script
-expInfo = {'participant': '', 'session': '001'}
-dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
-if dlg.OK == False:
-    core.quit()  # user pressed cancel
-expInfo['date'] = data.getDateStr()  # add a simple timestamp
-expInfo['expName'] = expName
-expInfo['psychopyVersion'] = psychopyVersion
+date = data.getDateStr()
+log_csv = '%s/data/log.csv'%(sub_dir)
+if not os.path.isfile(log_csv):
+	expInfo = {
+			'Date': date,
+			'Participant': sub, 
+			'Gender': '', 
+			'Age':'',
+			'Hand':'',
+	}
+	dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=sub)
+	if dlg.OK == False:
+	    core.quit()  # user pressed cancel
+	print(expInfo)
+	
+	log_f = open(log_csv, 'w', newline='')
+	log_w=csv.writer(log_f)
+	log_w.writerow(expInfo)
+	log_w.writerow( [ expInfo['Date'], expInfo['Participant'], expInfo['Gender'], expInfo['Age'], expInfo['Hand'] ] )
+	log_w.writerow(['Session 01', 'Localizer %s'%(exp)])
+
+else: 
+	expInfo = {
+			'Date': date,
+			'Participant': sub, 
+			'Gender': '', 
+			'Age':'',
+			'Hand':'',
+	}
+
+	log_f = open(log_csv, 'a', newline='')
+	log_r = csv.reader(open(log_csv,"r+"))
+	log_count = len(list(log_r))
+	session = str(log_count-1).zfill(2)
+
+	log_w=csv.writer(log_f)
+	log_w.writerow(['Session %s'%(session), 'Localizer %s'%(exp)])
+''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])
+filename = _thisDir + os.sep + u'data/%s_%s_%s' % (exp, sub, date)
 
 # An ExperimentHandler isn't essential but helps with data saving
-thisExp = data.ExperimentHandler(name=expName, version='',
+thisExp = data.ExperimentHandler(name=sub, version='',
     extraInfo=expInfo, runtimeInfo=None,
     originPath='/Users/nibey/Desktop/WorkSpace/preConn/1-FSO_localizer/structure2.py',
     savePickle=True, saveWideText=True,

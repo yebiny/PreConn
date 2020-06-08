@@ -30,6 +30,7 @@ from psychopy.hardware import keyboard
 import csv
 
 # Setting 
+sub = sys.argv[1]
 
 date=200420
 direction = +1
@@ -49,32 +50,33 @@ wait_key = ['s']
 
 timer = 432
 
+# Store info about the experiment session
+expInfo = {
+		'Date': data.getDateStr(), 
+		'Participant': sub
+}
+dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=sub)
+if dlg.OK == False:
+    core.quit()  # user pressed cancel
 
+log_csv = '../subjects/%s/data/log.csv'%sub
+log_f = open(log_csv, 'a', newline='')
+log_r = csv.reader(open(log_csv,"r+"))
+log_count = len(list(log_r))
+session = str(log_count-1).zfill(2)
 
-# Set data
-expInfo = {'participant': '', 'session': '001'}
-expName = '3-dia'  # from the Builder filename that created this script
-expInfo['expName'] = date
-expInfo['date'] = 200420  # add a simple timestamp
-psychopyVersion = '2020.1.2'
-expInfo['psychopyVersion'] = psychopyVersion
-
-sub = sys.argv[1]
+log_w=csv.writer(log_f)
+log_w.writerow(['Session %s'%(session), 'Diamond'])
 
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
-# Store info about the experiment session
-dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
-if dlg.OK == False:
-    core.quit()  # user pressed cancel
-
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-filename = _thisDir + os.sep + 'data/%s_%s' % (expName, expInfo['date'])
+filename = _thisDir + os.sep + 'data/%s_3_%s' % (sub, expInfo['Date'])
 
 # An ExperimentHandler isn't essential but helps with data saving
-thisExp = data.ExperimentHandler(name=expName, version='',
+thisExp = data.ExperimentHandler(name=sub, version='',
     extraInfo=expInfo, runtimeInfo=None,
     originPath='/Users/nibey/Desktop/WorkSpace/preConn/3-Dia/untitled_lastrun.py',
     savePickle=True, saveWideText=True,

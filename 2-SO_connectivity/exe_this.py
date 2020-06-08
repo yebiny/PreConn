@@ -89,21 +89,29 @@ writer.writerow(['Block', 'StimNum', 'OImg', 'SceneImg', 'Target', 'ImgStart', '
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 # Store info about the experiment session
-psychopyVersion = '2020.1.2'
-expName = 'test'  # from the Builder filename that created this script
-expInfo = {'participant': '', 'session': '001'}
-dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
+date = data.getDateStr()
+expInfo = {
+		'Date': date,
+		'Participant': sub, 
+}
+dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=sub)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
-expInfo['date'] = data.getDateStr()  # add a simple timestamp
-expInfo['expName'] = expName
-expInfo['psychopyVersion'] = psychopyVersion
+
+log_csv = '%s/data/log.csv'%sub_dir
+log_f = open(log_csv, 'a', newline='')
+log_r = csv.reader(open(log_csv,"r+"))
+log_count = len(list(log_r))
+session = str(log_count-1).zfill(2)
+
+log_w=csv.writer(log_f)
+log_w.writerow(['Session %s'%(session), 'Background Connectivity 2-%s'%(exp)])
 
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])
+filename = _thisDir + os.sep + u'data/%s_2-%s_%s' % (sub, exp, date)
 
 # An ExperimentHandler isn't essential but helps with data saving
-thisExp = data.ExperimentHandler(name=expName, version='',
+thisExp = data.ExperimentHandler(name=sub, version='',
     extraInfo=expInfo, runtimeInfo=None,
     originPath='/Users/nibey/Desktop/WorkSpace/preConn/2-SO_connectivity/structure2.py',
     savePickle=True, saveWideText=True,
@@ -524,7 +532,12 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
         Imgs.addData('sig_resp.started', sig_resp.tStartRefresh)
         Imgs.addData('sig_resp.stopped', sig_resp.tStopRefresh)
         thisExp.nextEntry()
-        dataInfo = [i, j, o_img, s_img, target_list[idx], Object.tStartRefresh, Object.tStopRefresh, sub_resp.rt, sig_resp.rt,  sig_resp_2.rt]
+        img_start, img_end = Object.tStartRefresh, Object.tStopRefresh
+		if sig_resp.rt ==None:
+			sig_resp_time = 0
+		else: sig_resp_time = sig_resp.rt
+#dataInfo = [i, j, o_img, s_img, target_list[idx], Object.tStartRefresh, Object.tStopRefresh, sub_resp.rt, sig_resp.rt,  sig_resp_2.rt]
+        dataInfo = [i, j, o_img, s_img, target_list[idx], img_start, img_end, 0, img_end-img_start,  sub_resp.rt, sig_resp_time,  sig_resp_2.rt]
         writer.writerow(dataInfo)
         
     # completed 1 repeats of 'Imgs'
