@@ -60,10 +60,10 @@ btw_blocks_time = 12
 
 wait_key=['s']
 sig_resp_key=['s']
-sub_resp_key=['c']
+sub_resp_key=['d']
 
 sub_resp_term = 0.3
-sig_resp_term = 0.3
+sig_resp_term = 0.1
 
 dot_size = 0.007
 img_size = 0.3
@@ -84,7 +84,8 @@ log_csv = '%s/data/log.csv'%(sub_dir)
 if not os.path.isfile(log_csv):
 	expInfo = {
 			'Date': date,
-			'Participant': sub, 
+			'Participant': sub,
+		    'Birth': '', 	
 			'Gender': '', 
 			'Age':'',
 			'Hand':'',
@@ -97,7 +98,7 @@ if not os.path.isfile(log_csv):
 	log_f = open(log_csv, 'w', newline='')
 	log_w=csv.writer(log_f)
 	log_w.writerow(expInfo)
-	log_w.writerow( [ expInfo['Date'], expInfo['Participant'], expInfo['Gender'], expInfo['Age'], expInfo['Hand'] ] )
+	log_w.writerow( [ expInfo['Date'], expInfo['Participant'], expInfo['Birth'], expInfo['Gender'], expInfo['Age'], expInfo['Hand'] ] )
 	log_w.writerow(['Session 01', 'Localizer %s'%(exp)])
 
 else: 
@@ -284,6 +285,8 @@ if wait_resp.keys != None:  # we had a response
     thisExp.addData('wait_resp.rt', wait_resp.rt)
 thisExp.addData('wait_resp.started', wait_resp.tStartRefresh)
 thisExp.addData('wait_resp.stopped', wait_resp.tStopRefresh)
+dataInfo = [[], [], [], [], wait_resp.tStartRefresh, 0, [], [], wait_resp.rt, []]
+writer.writerow(dataInfo)
 thisExp.nextEntry()
 # the Routine "Wait" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()

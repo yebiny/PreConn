@@ -31,6 +31,7 @@ import csv
 
 # Setting 
 sub = sys.argv[1]
+exp = sys.argv[2]
 
 direction = +1
 
@@ -41,7 +42,7 @@ Rec_color= 'white'
 
 Dia_size = 0.2
 Dia_color= 'white'
-Dia_line_width = 28
+Dia_line_width = 13
 Dia_pos = 0
 Dia_v = 0.0015
 resp_key = ['c', 'd']
@@ -65,14 +66,14 @@ log_count = len(list(log_r))
 session = str(log_count-1).zfill(2)
 
 log_w=csv.writer(log_f)
-log_w.writerow(['Session %s'%(session), 'Diamond'])
+log_w.writerow(['Session %s'%(session), 'Diamond %s'%exp])
 
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-filename = _thisDir + os.sep + 'data/3_%s_%s' % (sub, expInfo['Date'])
+filename = _thisDir + os.sep + 'data/3-%s_%s_%s' % (exp, sub, expInfo['Date'])
 
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=sub, version='',
@@ -109,7 +110,7 @@ defaultKeyboard = keyboard.Keyboard()
 # Initialize components for Routine "Wait"
 WaitClock = core.Clock()
 wait_text = visual.TextStim(win=win, name='wait_text',
-    text='곧 실험이 시작됩니다. \n 선으로 보이면 엄지, 도형으로 보이면 검지에 있는 버튼을 눌러주세요.',
+    text='곧 실험이 시작됩니다. \n 도형으로 보이면 엄지, 선으로 보이면 검지에 있는 버튼을 눌러주세요.',
     font='AppleMyungjo',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0,
     color='black', colorSpace='rgb', opacity=1,
@@ -446,7 +447,7 @@ while continueRoutine:
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''
         # !-2 OUTPUT FILE
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''
-        f = open('../subjects/%s/data/3_output.csv'%(sub), 'w', newline='')
+        f = open('../subjects/%s/data/3-%s_output.csv'%(sub, exp), 'w', newline='')
         writer=csv.writer(f)
         writer.writerow(['Key','Time'])
         for i in range(len(Resp_sub.keys)):

@@ -68,7 +68,7 @@ trial_time = img_time+dot_time
 btw_blocks_time = 12
 
 wait_key=['s']
-sub_resp_key=['c']
+sub_resp_key=['d']
 sig_resp_key=['s']
 
 sub_resp_term = 0.3
