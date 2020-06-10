@@ -72,7 +72,8 @@ sub_resp_key=['d']
 sig_resp_key=['s']
 
 sub_resp_term = 0.3
-sig_resp_term = 0.3
+sig_resp_start = 0.4
+sig_resp_end = 0.1
 
 dot_size = 0.007
 img_size = 0.3
@@ -329,7 +330,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
         
         # ------Prepare to start Routine "Trial"-------
         continueRoutine = True
-        routineTimer.add(trial_time + sig_resp_term)
+        routineTimer.add(trial_time + sig_resp_end)
         # update component parameters for each repeat
         
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -422,7 +423,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
                 Dot.setAutoDraw(True)
             if Dot.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > Dot.tStartRefresh + trial_time+sig_resp_term-frameTolerance:
+                if tThisFlipGlobal > Dot.tStartRefresh + trial_time+sig_resp_end-frameTolerance:
                     # keep track of stop time/frame for later
                     Dot.tStop = t  # not accounting for scr refresh
                     Dot.frameNStop = frameN  # exact frame index
@@ -460,7 +461,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
 
             # *sig_resp* updates
             waitOnFlip = False
-            if sig_resp.status == NOT_STARTED and tThisFlip >= (trial_time-sig_resp_term)-frameTolerance:
+            if sig_resp.status == NOT_STARTED and tThisFlip >= (trial_time-sig_resp_start)-frameTolerance:
                 # keep track of start time/frame for later
                 sig_resp.frameNStart = frameN  # exact frame index
                 sig_resp.tStart = t  # local t and not account for scr refresh
@@ -473,7 +474,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
                 win.callOnFlip(sig_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
             if sig_resp.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > sig_resp.tStartRefresh + (sig_resp_term)*2-frameTolerance:
+                if tThisFlipGlobal > sig_resp.tStartRefresh + (sig_resp_start + sig_resp_end)-frameTolerance:
                     # keep track of stop time/frame for later
                     sig_resp.tStop = t  # not accounting for scr refresh
                     sig_resp.frameNStop = frameN  # exact frame index
@@ -535,8 +536,8 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
         
         # !-
         if type(sig_resp.rt) == float:
-            sig_resp_time = trial_time-sig_resp_term+sig_resp.rt
-        else: sig_resp_time = trial_time+sig_resp_term
+            sig_resp_time = trial_time - sig_resp_start + sig_resp.rt
+        else: sig_resp_time = trial_time + sig_resp_end
         
         img_start, img_end = Object.tStartRefresh, Object.tStopRefresh
         dataInfo = [i, j, o_img, s_img, target_list[idx], img_start, 0, img_end-img_start,  sub_resp.rt, sig_resp_time,  []]
@@ -547,7 +548,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
     
     # ------Prepare to start Routine "Rest"-------
     continueRoutine = True
-    routineTimer.add(btw_blocks_time+sig_resp_term)
+    routineTimer.add(btw_blocks_time + sig_resp_end)
     # update component parameters for each repeat
     sig_resp_2.keys = []
     sig_resp_2.rt = []
@@ -595,7 +596,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
         
         # *sig_resp_2* updates
         waitOnFlip = False
-        if sig_resp_2.status == NOT_STARTED and tThisFlip >= (btw_blocks_time-sig_resp_term)-frameTolerance:
+        if sig_resp_2.status == NOT_STARTED and tThisFlip >= (btw_blocks_time-sig_resp_start)-frameTolerance:
             # keep track of start time/frame for later
             sig_resp_2.frameNStart = frameN  # exact frame index
             sig_resp_2.tStart = t  # local t and not account for scr refresh
@@ -608,7 +609,7 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
             win.callOnFlip(sig_resp_2.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if sig_resp_2.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > sig_resp_2.tStartRefresh + (sig_resp_term*2)-frameTolerance:
+            if tThisFlipGlobal > sig_resp_2.tStartRefresh + (sig_resp_start+sig_resp_end)-frameTolerance:
                 # keep track of stop time/frame for later
                 sig_resp_2.tStop = t  # not accounting for scr refresh
                 sig_resp_2.frameNStop = frameN  # exact frame index
