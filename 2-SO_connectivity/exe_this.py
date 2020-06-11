@@ -540,7 +540,9 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
         else: sig_resp_time = trial_time + sig_resp_end
         
         img_start, img_end = Object.tStartRefresh, Object.tStopRefresh
-        dataInfo = [i, j, o_img, s_img, target_list[idx], img_start, 0, img_end-img_start,  sub_resp.rt, sig_resp_time,  []]
+        if j == 0 : img_init = img_start 
+		
+        dataInfo = [i, j, o_img, s_img, target_list[idx], img_start, img_start-img_init, img_end-img_start,  sub_resp.rt, sig_resp_time,  []]
         writer.writerow(dataInfo)
         
     # completed 1 repeats of 'Imgs'

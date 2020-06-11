@@ -516,11 +516,13 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
             sig_resp_time = trial_time-sig_resp_start+sig_resp.rt
         else: sig_resp_time = trial_time+sig_resp_end
         img_start = Image.tStartRefresh
+        if j == 0: init_start = img_start
         img_end = Image.tStopRefresh
-        
-        dataInfo = [i, j, this_img, target_list[idx], img_start, 0, img_end-img_start,  sub_resp.rt, sig_resp_time, []]
+
+        dataInfo = [i, j, this_img, target_list[idx], img_start, img_start-init_start, img_end-img_start,  sub_resp.rt, sig_resp_time, []]
         writer.writerow(dataInfo)
-    # completed 5 repeats of 'Imgs'
+
+    # completed repeats of 'Imgs'
     
     
     # ------Prepare to start Routine "Term"-------
