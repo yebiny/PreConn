@@ -49,7 +49,7 @@ resp_key = ['c', 'd']
 wait_key = ['s']
 
 timer = 432
-
+len_keys, len_rt = 0, 0
 # Store info about the experiment session
 expInfo = {
 		'Date': data.getDateStr(), 
@@ -67,6 +67,13 @@ session = str(log_count-1).zfill(2)
 
 log_w=csv.writer(log_f)
 log_w.writerow(['Session %s'%(session), 'Diamond %s'%exp])
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''
+# !-2 OUTPUT FILE
+''''''''''''''''''''''''''''''''''''''''''''''''''''''
+f = open('../subjects/%s/data/3-%s_output.csv'%(sub, exp), 'w', newline='')
+writer=csv.writer(f)
+writer.writerow(['Key','Time'])
 
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
@@ -408,7 +415,12 @@ while continueRoutine:
         if len(_Resp_sub_allKeys):
             Resp_sub.keys = [key.name for key in _Resp_sub_allKeys]  # storing all keys
             Resp_sub.rt = [key.rt for key in _Resp_sub_allKeys]
-
+            if len_keys < len(Resp_sub.keys):
+                len_keys = len(Resp_sub.keys)
+                len_rt = len(Resp_sub.rt)
+                writer.writerow([Resp_sub.keys[-1], Resp_sub.rt[-1]])
+                ''''''''''''''''''''''''''''''''''''''''''''''''''''''        
+            	
             #Resp_sub.keys = _Resp_sub_allKeys[-1].name  # just the last key pressed
             #Resp_sub.rt = _Resp_sub_allKeys[-1].rt
     # *Resp_end* updates
@@ -444,15 +456,6 @@ while continueRoutine:
 
     # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''
-        # !-2 OUTPUT FILE
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''
-        f = open('../subjects/%s/data/3-%s_output.csv'%(sub, exp), 'w', newline='')
-        writer=csv.writer(f)
-        writer.writerow(['Key','Time'])
-        for i in range(len(Resp_sub.keys)):
-            writer.writerow([Resp_sub.keys[i], Resp_sub.rt[i]])
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''        
         core.quit()
     
     # check if all components have finished
@@ -502,6 +505,7 @@ thisExp.addData('Resp_end.stopped', Resp_end.tStopRefresh)
 thisExp.nextEntry()
 # the Routine "Trial" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
+
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

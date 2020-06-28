@@ -40,7 +40,7 @@ Rec_color= 'white'
 
 Dia_size = 0.2
 Dia_color= 'white'
-Dia_line_width = 28
+Dia_line_width = 18
 Dia_pos = 0
 Dia_v = 0.0015
 resp_key = ['c', 'd']
@@ -80,7 +80,7 @@ defaultKeyboard = keyboard.Keyboard()
 # Initialize components for Routine "Wait"
 WaitClock = core.Clock()
 wait_text = visual.TextStim(win=win, name='wait_text',
-    text='곧 실험이 시작됩니다. \n 선으로 보이면 엄지, 도형으로 보이면 검지에 있는 버튼을 눌러주세요.',
+    text='Train..',
     font='AppleMyungjo',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0,
     color='black', colorSpace='rgb', opacity=1,

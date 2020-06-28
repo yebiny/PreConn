@@ -64,7 +64,7 @@ sub_resp_key=['d']
 
 sub_resp_term = 0.3
 sig_resp_start = 0.4
-sig_resp_end   = 0.1
+sig_resp_end   = 0.01
 
 dot_size = 0.007
 img_size = 0.3
@@ -158,7 +158,7 @@ defaultKeyboard = keyboard.Keyboard()
 # Initialize components for Routine "Wait"
 WaitClock = core.Clock()
 wait_text = visual.TextStim(win=win, name='wait_text',
-    text='곧 실험이 시작됩니다.\n 이미지가 반복되면 버튼을 눌러주세요',
+    text='곧 실험이 시작됩니다.\n 이미지가 반복되면 엄지 손가락의 버튼을 눌러주세요',
     font='AppleMyungjo',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 

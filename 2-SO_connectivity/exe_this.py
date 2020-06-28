@@ -73,7 +73,7 @@ sig_resp_key=['s']
 
 sub_resp_term = 0.3
 sig_resp_start = 0.4
-sig_resp_end = 0.1
+sig_resp_end = 0.01
 
 dot_size = 0.007
 img_size = 0.3
@@ -150,7 +150,7 @@ if thisTrial == 'Object':
 else: thisText = '배경'
 WaitClock = core.Clock()
 wait_text = visual.TextStim(win=win, name='wait_text',
-    text= '이번 시행에서는 %s 이미지에 집중해 주시고 %s 이미지가 반복되면 버튼을 눌러주세요.'%(thisText, thisText), 
+    text= '이번 시행에서는 %s 이미지에 집중해 주시고 %s 이미지가 반복되면 엄지 손가락의 버튼을 눌러주세요.'%(thisText, thisText), 
     font='AppleMyungjo',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
