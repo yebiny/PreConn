@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.1.2),
@@ -64,7 +64,7 @@ sub_resp_key=['d']
 
 sub_resp_term = 0.3
 sig_resp_start = 0.4
-sig_resp_end   = 0.01
+sig_resp_end   = 0.2
 
 dot_size = 0.007
 img_size = 0.3
@@ -516,12 +516,17 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
             sig_resp_time = trial_time-sig_resp_start+sig_resp.rt
         else: sig_resp_time = trial_time+sig_resp_end
         img_start = Image.tStartRefresh
-        if j == 0: init_start = img_start
+        
+        if i==0 and j == 0: img_init = img_start
         img_end = Image.tStopRefresh
 
-        dataInfo = [i, j, this_img, target_list[idx], img_start, img_start-init_start, img_end-img_start,  sub_resp.rt, sig_resp_time, []]
+        dataInfo = [i, j, this_img, target_list[idx], img_start, img_start-img_init, img_end-img_start,  sub_resp.rt, sig_resp_time, []]
         writer.writerow(dataInfo)
-
+        
+        # !- if not signal
+        if sig_resp_time == 2+sig_resp_end:
+            sig_resp_end = 0
+        else: sig_resp_end = 0.2
     # completed repeats of 'Imgs'
     
     

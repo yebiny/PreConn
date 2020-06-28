@@ -73,7 +73,7 @@ sig_resp_key=['s']
 
 sub_resp_term = 0.3
 sig_resp_start = 0.4
-sig_resp_end = 0.01
+sig_resp_end = 0.2
 
 dot_size = 0.007
 img_size = 0.3
@@ -540,11 +540,15 @@ for i, thisBlock in zip(range(nBlocks), Blocks):
         else: sig_resp_time = trial_time + sig_resp_end
         
         img_start, img_end = Object.tStartRefresh, Object.tStopRefresh
-        if j == 0 : img_init = img_start 
+        if i==0 and j == 0 : img_init = img_start 
 		
         dataInfo = [i, j, o_img, s_img, target_list[idx], img_start, img_start-img_init, img_end-img_start,  sub_resp.rt, sig_resp_time,  []]
         writer.writerow(dataInfo)
-        
+      
+        # !- if not signal
+        if sig_resp_time == 2+sig_resp_end: 
+            sig_resp_end = 0
+        else: sig_resp_end = 0.2
     # completed 1 repeats of 'Imgs'
     
     
